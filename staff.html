@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaches | EC Hurricanes Youth Football & Cheer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+/* ================================================
+   EC HURRICANES - Storm Theme (Black & Gold)
+   ================================================ */
+
+:root {
+    --storm-dark: #0a0a0a;
+    --storm-darker: #050505;
+    --storm-gray: #111111;
+    --storm-mid: #1a1a1a;
+    --cloud-gray: #2a2a2a;
+    --gold-primary: #ffd700;
+    --gold-light: #ffdf33;
+    --gold-dark: #c9a800;
+    --gold-glow: rgba(255, 215, 0, 0.6);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #707070;
+    --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffdf33 50%, #c9a800 100%);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    background: var(--storm-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 16px 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--gold-primary);
+    filter: drop-shadow(0 0 10px var(--gold-glow));
+}
+
+.logo-icon svg { width: 100%; height: 100%; }
+
+.logo-text { display: flex; flex-direction: column; }
+
+.logo-main {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 1;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-sub {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-gold);
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-cta {
+    padding: 12px 24px !important;
+    background: var(--gradient-gold);
+    border-radius: 6px;
+    color: var(--storm-dark) !important;
+    font-weight: 600 !important;
+}
+
+.nav-cta::after { display: none !important; }
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--gold-glow);
+}
+
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--gold-primary);
+    transition: var(--transition-fast);
+}
+
+/* Page Header */
+.page-header {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--storm-darker) 0%, var(--storm-dark) 100%);
+    padding-top: 80px;
+}
+
+.storm-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.rain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.rain-drop {
+    position: absolute;
+    top: -20px;
+    background: linear-gradient(180deg, transparent, rgba(255, 215, 0, 0.3));
+    border-radius: 0 0 2px 2px;
+    animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+    to { transform: translateY(100vh); }
+}
+
+.lightning-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 215, 0, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.lightning-flash.flash {
+    animation: lightningFlash 0.15s ease-out;
+}
+
+@keyframes lightningFlash {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 0.3; }
+    30% { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+
+.page-header-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 60px 24px;
+}
+
+.page-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 10vw, 80px);
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-header p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Staff Section */
+.staff-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.staff-section.field-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(180deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.8) 50%, rgba(10,10,10,0.9) 100%),
+        url('field-bg.png');
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+}
+
+.staff-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--gold-primary);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 48px);
+    letter-spacing: 2px;
+}
+
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+.staff-card {
+    background: rgba(5, 5, 5, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    transition: var(--transition-medium);
+}
+
+.staff-card:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.staff-photo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px;
+    background: var(--storm-mid);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--gold-primary);
+    overflow: hidden;
+}
+
+.staff-photo svg {
+    width: 60px;
+    height: 60px;
+    color: var(--text-muted);
+}
+
+.staff-card h3 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.staff-role {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-primary);
+    margin-bottom: 16px;
+}
+
+.staff-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.staff-certifications {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.staff-certifications span {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 4px;
+    color: var(--gold-primary);
+}
+
+/* Mission Section */
+.mission-section {
+    padding: 80px 0;
+    background: var(--storm-gray);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.mission-content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 44px);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+}
+
+.mission-content p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.values-list {
+    list-style: none;
+    margin-top: 32px;
+}
+
+.values-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.value-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+    color: var(--gold-primary);
+}
+
+.value-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.value-text h4 {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.value-text p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.mission-image {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--storm-mid);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.mission-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.6) 100%),
+        url('field-bg-2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.mission-image-text {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 40px;
+}
+
+.mission-image-text h3 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--gold-primary);
+    margin-bottom: 8px;
+}
+
+.mission-image-text p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Footer */
+.footer {
+    background: var(--storm-darker);
+    padding: 60px 0 24px;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.footer-brand p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 16px 0 24px;
+    max-width: 300px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo .logo-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.social-links a svg { width: 100%; height: 100%; }
+
+.social-links a:hover {
+    background: var(--gradient-gold);
+    transform: translateY(-3px);
+    color: var(--storm-dark);
+}
+
+.footer-links h4,
+.footer-contact-info h4 {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-primary);
+    margin-bottom: 20px;
+}
+
+.footer-links ul,
+.footer-contact-info ul { list-style: none; }
+
+.footer-links li,
+.footer-contact-info li { margin-bottom: 12px; }
+
+.footer-links a {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.footer-links a:hover { color: var(--gold-primary); }
+
+.footer-contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.contact-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--gold-primary);
+}
+
+.contact-icon svg { width: 100%; height: 100%; }
+
+.footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .mission-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .mobile-toggle { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 100px 40px 40px;
+        background: var(--storm-darker);
+        border-left: 1px solid rgba(255, 215, 0, 0.1);
+        transition: var(--transition-medium);
+    }
+
+    .nav-links.active { right: 0; }
+
+    .nav-links li { width: 100%; }
+
+    .nav-links a {
+        display: block;
+        padding: 16px 0;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-cta { margin-top: 24px; text-align: center; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">EC HURRICANES</span>
+                    <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
+                </div>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calendar.html">Schedule</a></li>
+                <li><a href="staff.html" class="active">Coaches</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signup.html" class="nav-cta">Join the Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="storm-container">
+            <div class="lightning-flash"></div>
+            <div class="rain-container" id="rainContainer"></div>
+        </div>
+        <div class="page-header-content">
+            <h1>OUR COACHES</h1>
+            <p>Meet the dedicated leaders who guide our young athletes to success on and off the field.</p>
+        </div>
+    </header>
+
+    <!-- Staff Section -->
+    <section class="staff-section field-bg">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Leadership Team</p>
+                <h2 class="section-title">COACHING STAFF</h2>
+            </div>
+            
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Zac Thomas</h3>
+                    <p class="staff-role">President / 10-12U Head Coach</p>
+                    <p>Leading our organization with passion and dedication to youth development through football.</p>
+                    <div class="staff-certifications">
+                        <span>AYFCA Certified</span>
+                        <span>USA Football</span>
+                    </div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Brandon Talbert</h3>
+                    <p class="staff-role">Marketing Director / 8U Head Coach</p>
+                    <p>Dedicated to growing our program and coaching the next generation of Hurricane athletes.</p>
+                    <div class="staff-certifications">
+                        <span>AYFCA Certified</span>
+                        <span>USA Football</span>
+                    </div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Cheer Coach</h3>
+                    <p class="staff-role">Head Cheer Coach</p>
+                    <p>Bringing energy and expertise to develop confident, skilled cheerleaders.</p>
+                    <div class="staff-certifications">
+                        <span>AACCA Certified</span>
+                        <span>USASF</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content">
+                    <h2>OUR MISSION</h2>
+                    <p>At EC Hurricanes, we're committed to developing well-rounded young athletes who excel not just in sports, but in life. Our coaches prioritize character development alongside skill building.</p>
+                    <p>Every practice, every game, and every interaction is an opportunity to teach valuable life lessons about teamwork, perseverance, and respect.</p>
+                    
+                    <ul class="values-list">
+                        <li>
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V19H7v2h10v-2h-4v-3.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2z"/>
+                                </svg>
+                            </div>
+                            <div class="value-text">
+                                <h4>Excellence</h4>
+                                <p>Striving for the best in everything we do</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="value-text">
+                                <h4>Teamwork</h4>
+                                <p>Building bonds that last a lifetime</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <div class="value-text">
+                                <h4>Safety First</h4>
+                                <p>Certified coaches committed to player wellbeing</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="value-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                                </svg>
+                            </div>
+                            <div class="value-text">
+                                <h4>Community</h4>
+                                <p>One team, one family, one Hurricane nation</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mission-image">
+                    <div class="mission-image-text">
+                        <h3>BUILDING CHAMPIONS</h3>
+                        <p>On and off the field since day one</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main">EC HURRICANES</span>
+                            <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
+                        </div>
+                    </div>
+                    <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5-12.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/echurricanes" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/echurricanes" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@echurricanes" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="calendar.html">Schedule</a></li>
+                        <li><a href="staff.html">Coaches</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="signup.html">Register</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-info">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </span>
+                            <span>506 NC-306, Grantsboro, NC 28529</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </span>
+                            <span>(252) 670-6707</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </span>
+                            <span>ecyouthfootballcheer@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EC Hurricanes Youth Football & Cheer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Rain Effect
+    function createRainDrop() {
+        const container = document.getElementById('rainContainer');
+        if (!container) return;
+        
+        const drop = document.createElement('div');
+        drop.className = 'rain-drop';
+        
+        const left = Math.random() * 100;
+        const height = 10 + Math.random() * 20;
+        const width = 1 + Math.random() * 1;
+        const duration = 0.5 + Math.random() * 0.5;
+        const delay = Math.random() * 2;
+        const opacity = 0.3 + Math.random() * 0.4;
+        
+        drop.style.cssText = `
+            left: ${left}%;
+            height: ${height}px;
+            width: ${width}px;
+            animation-duration: ${duration}s;
+            animation-delay: ${delay}s;
+            opacity: ${opacity};
+        `;
+        
+        container.appendChild(drop);
+        
+        setTimeout(() => {
+            drop.remove();
+            createRainDrop();
+        }, (duration + delay) * 1000);
+    }
+
+    for (let i = 0; i < 100; i++) {
+        setTimeout(createRainDrop, i * 50);
+    }
+
+    // Lightning Effect
+    function triggerLightning() {
+        const flash = document.querySelector('.lightning-flash');
+        if (!flash) return;
+        
+        if (Math.random() > 0.3) {
+            flash.classList.add('flash');
+            setTimeout(() => flash.classList.remove('flash'), 150);
+            
+            if (Math.random() > 0.7) {
+                setTimeout(() => {
+                    flash.classList.add('flash');
+                    setTimeout(() => flash.classList.remove('flash'), 150);
+                }, 100);
+            }
+        }
+        
+        setTimeout(triggerLightning, 3000 + Math.random() * 7000);
+    }
+
+    setTimeout(triggerLightning, 2000);
+
+    // Mobile Menu
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileToggle.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
+        });
+    });
+    </script>
+</body>
+</html>
