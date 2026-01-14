@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule | EC Hurricanes Youth Football & Cheer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+/* ================================================
+   EC HURRICANES - Storm Theme (Black & Gold)
+   ================================================ */
+
+:root {
+    --storm-dark: #0a0a0a;
+    --storm-darker: #050505;
+    --storm-gray: #111111;
+    --storm-mid: #1a1a1a;
+    --cloud-gray: #2a2a2a;
+    --gold-primary: #ffd700;
+    --gold-light: #ffdf33;
+    --gold-dark: #c9a800;
+    --gold-glow: rgba(255, 215, 0, 0.6);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #707070;
+    --gradient-storm: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffdf33 50%, #c9a800 100%);
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-heading: 'Oswald', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-fast: 0.2s ease;
+    --transition-medium: 0.4s ease;
+    --transition-slow: 0.6s ease;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--storm-dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ================================================
+   NAVIGATION
+   ================================================ */
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 16px 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--gold-primary);
+    filter: drop-shadow(0 0 10px var(--gold-glow));
+}
+
+.logo-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: 1;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-sub {
+    font-family: var(--font-heading);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-secondary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-gold);
+    transition: var(--transition-fast);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold-primary);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-cta {
+    padding: 12px 24px !important;
+    background: var(--gradient-gold);
+    border-radius: 6px;
+    color: var(--storm-dark) !important;
+    font-weight: 600 !important;
+}
+
+.nav-cta::after {
+    display: none !important;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--gold-glow);
+}
+
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-toggle span {
+    width: 24px;
+    height: 2px;
+    background: var(--gold-primary);
+    transition: var(--transition-fast);
+}
+
+/* ================================================
+   PAGE HEADER WITH RAIN
+   ================================================ */
+.page-header {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(180deg, var(--storm-darker) 0%, var(--storm-dark) 100%);
+    padding-top: 80px;
+}
+
+.storm-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.rain-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.rain-drop {
+    position: absolute;
+    top: -20px;
+    background: linear-gradient(180deg, transparent, rgba(255, 215, 0, 0.3));
+    border-radius: 0 0 2px 2px;
+    animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.lightning-flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 215, 0, 0.15);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.lightning-flash.flash {
+    animation: lightningFlash 0.15s ease-out;
+}
+
+@keyframes lightningFlash {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    20% { opacity: 0.3; }
+    30% { opacity: 0.8; }
+    100% { opacity: 0; }
+}
+
+.page-header-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 60px 24px;
+}
+
+.page-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 10vw, 80px);
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.page-header p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ================================================
+   CALENDAR SECTION
+   ================================================ */
+.calendar-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.calendar-section.field-bg {
+    background: var(--storm-dark);
+}
+
+.calendar-section.field-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(180deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.8) 50%, rgba(10,10,10,0.9) 100%),
+        url('field-bg.png');
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+}
+
+.calendar-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.calendar-container {
+    background: rgba(20, 20, 20, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 16px;
+    padding: 32px;
+    backdrop-filter: blur(10px);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.calendar-header h3 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--gold-primary);
+}
+
+.calendar-nav {
+    display: flex;
+    gap: 8px;
+}
+
+.calendar-nav button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 8px;
+    color: var(--gold-primary);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.calendar-nav button:hover {
+    background: var(--gold-primary);
+    color: var(--storm-dark);
+}
+
+.calendar-grid-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.calendar-grid-header span {
+    text-align: center;
+    padding: 12px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-primary);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.calendar-day:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.calendar-day.other-month {
+    color: var(--text-muted);
+}
+
+.calendar-day.today {
+    background: var(--gradient-gold);
+    color: var(--storm-dark);
+    font-weight: 700;
+}
+
+.calendar-day.has-event {
+    border: 1px solid var(--gold-primary);
+}
+
+/* ================================================
+   EVENTS TIMELINE
+   ================================================ */
+.events-section {
+    padding: 80px 0;
+    background: var(--storm-gray);
+}
+
+.section-header {
+    margin-bottom: 48px;
+}
+
+.section-label {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--gold-primary);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 6vw, 48px);
+    letter-spacing: 2px;
+}
+
+.events-timeline {
+    position: relative;
+    padding-left: 40px;
+}
+
+.events-timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--gold-primary), transparent);
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    background: var(--storm-darker);
+    border: 2px solid var(--gold-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.timeline-content {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    transition: var(--transition-fast);
+}
+
+.timeline-content:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 215, 0, 0.3);
+}
+
+.timeline-date {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    padding: 16px;
+    background: var(--gradient-gold);
+    border-radius: 8px;
+}
+
+.timeline-date .month {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--storm-dark);
+}
+
+.timeline-date .year {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--storm-dark);
+    line-height: 1;
+}
+
+.timeline-info h4 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.timeline-info p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.timeline-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.timeline-location svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* ================================================
+   PRACTICE SCHEDULE
+   ================================================ */
+.practice-section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.practice-section.field-bg-alt::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(180deg, rgba(10,10,10,0.9) 0%, rgba(10,10,10,0.75) 50%, rgba(10,10,10,0.9) 100%),
+        url('field-bg-2.png');
+    background-size: cover;
+    background-position: center top;
+    pointer-events: none;
+}
+
+.practice-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.practice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.practice-card {
+    background: rgba(5, 5, 5, 0.9);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    transition: var(--transition-fast);
+}
+
+.practice-card:hover {
+    border-color: rgba(255, 215, 0, 0.4);
+    transform: translateY(-4px);
+}
+
+.practice-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    color: var(--gold-primary);
+}
+
+.practice-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.practice-card h4 {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--gold-primary);
+}
+
+.practice-card .days {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.practice-card .time {
+    font-family: var(--font-display);
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.footer {
+    background: var(--storm-darker);
+    padding: 60px 0 24px;
+    border-top: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+}
+
+.footer-brand p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin: 16px 0 24px;
+    max-width: 300px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-logo .logo-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+}
+
+.social-links a svg {
+    width: 100%;
+    height: 100%;
+}
+
+.social-links a:hover {
+    background: var(--gradient-gold);
+    transform: translateY(-3px);
+    color: var(--storm-dark);
+}
+
+.footer-links h4,
+.footer-contact-info h4 {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-primary);
+    margin-bottom: 20px;
+}
+
+.footer-links ul,
+.footer-contact-info ul {
+    list-style: none;
+}
+
+.footer-links li,
+.footer-contact-info li {
+    margin-bottom: 12px;
+}
+
+.footer-links a {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.footer-links a:hover {
+    color: var(--gold-primary);
+}
+
+.footer-contact-info li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.contact-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--gold-primary);
+}
+
+.contact-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.footer-bottom p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* ================================================
+   RESPONSIVE
+   ================================================ */
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 400px;
+        height: 100vh;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 100px 40px 40px;
+        background: var(--storm-darker);
+        border-left: 1px solid rgba(255, 215, 0, 0.1);
+        transition: var(--transition-medium);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 16px 0;
+        font-size: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-cta {
+        margin-top: 24px;
+        text-align: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .timeline-content {
+        flex-direction: column;
+    }
+
+    .timeline-date {
+        align-self: flex-start;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">EC HURRICANES</span>
+                    <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
+                </div>
+            </a>
+            <button class="mobile-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="calendar.html" class="active">Schedule</a></li>
+                <li><a href="staff.html">Coaches</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="signup.html" class="nav-cta">Join the Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header with Rain -->
+    <header class="page-header">
+        <div class="storm-container">
+            <div class="lightning-flash"></div>
+            <div class="rain-container" id="rainContainer"></div>
+        </div>
+        <div class="page-header-content">
+            <h1>SCHEDULE</h1>
+            <p>Stay up to date with practices, games, and events throughout the season.</p>
+        </div>
+    </header>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section field-bg">
+        <div class="container">
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3 id="calendarMonth">January 2025</h3>
+                    <div class="calendar-nav">
+                        <button id="prevMonth" aria-label="Previous month">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                        </button>
+                        <button id="nextMonth" aria-label="Next month">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="calendar-grid-header">
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar days populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Timeline -->
+    <section class="events-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Coming Up</p>
+                <h2 class="section-title">SEASON EVENTS</h2>
+            </div>
+            
+            <div class="events-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <span class="month">TBA</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="timeline-info">
+                            <h4>Registration Opens</h4>
+                            <p>Online registration begins for the upcoming season. Early bird pricing available!</p>
+                            <span class="timeline-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                                Online
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <span class="month">TBA</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="timeline-info">
+                            <h4>Equipment Distribution</h4>
+                            <p>Pick up uniforms and equipment for all registered players.</p>
+                            <span class="timeline-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                506 NC-306, Grantsboro
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <span class="month">TBA</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="timeline-info">
+                            <h4>First Practice</h4>
+                            <p>Season kickoff! All divisions begin practice. Don't forget water and proper gear.</p>
+                            <span class="timeline-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                506 NC-306, Grantsboro
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">
+                            <span class="month">TBA</span>
+                            <span class="year">2025</span>
+                        </div>
+                        <div class="timeline-info">
+                            <h4>Season Opener</h4>
+                            <p>First game of the season! Come out and support your Hurricanes.</p>
+                            <span class="timeline-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Location TBA
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Schedule -->
+    <section class="practice-section field-bg-alt">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <p class="section-label">Weekly Schedule</p>
+                <h2 class="section-title">PRACTICE TIMES</h2>
+            </div>
+            
+            <div class="practice-grid">
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg viewBox="0 0 48 48" fill="currentColor">
+                            <path d="M2 24 Q24 4 46 24 Q24 44 2 24Z"/>
+                            <line x1="24" y1="14" x2="24" y2="34" stroke="#0a0a0a" stroke-width="2"/>
+                            <line x1="20" y1="18" x2="28" y2="18" stroke="#0a0a0a" stroke-width="2"/>
+                            <line x1="20" y1="24" x2="28" y2="24" stroke="#0a0a0a" stroke-width="2"/>
+                            <line x1="20" y1="30" x2="28" y2="30" stroke="#0a0a0a" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h4>8U Football</h4>
+                    <p class="days">Tuesday & Thursday</p>
+                    <p class="time">5:30 PM - 7:00 PM</p>
+                </div>
+                
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg viewBox="0 0 48 48" fill="currentColor">
+                            <path d="M2 24 Q24 4 46 24 Q24 44 2 24Z"/>
+                            <line x1="24" y1="14" x2="24" y2="34" stroke="#0a0a0a" stroke-width="2"/>
+                            <line x1="20" y1="18" x2="28" y2="18" stroke="#0a0a0a" stroke-width="2"/>
+                            <line x1="20" y1="24" x2="28" y2="24" stroke="#0a0a0a" stroke-width="2"/>
+                            <line x1="20" y1="30" x2="28" y2="30" stroke="#0a0a0a" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h4>10/12U Football</h4>
+                    <p class="days">Monday, Wednesday & Friday</p>
+                    <p class="time">5:30 PM - 7:30 PM</p>
+                </div>
+                
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <svg viewBox="0 0 48 48" fill="currentColor">
+                            <path d="M4 16 L4 32 L36 44 L36 4 Z"/>
+                            <rect x="36" y="18" width="8" height="12" rx="2"/>
+                        </svg>
+                    </div>
+                    <h4>Cheerleading</h4>
+                    <p class="days">Tuesday & Thursday</p>
+                    <p class="time">5:30 PM - 7:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main">EC HURRICANES</span>
+                            <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
+                        </div>
+                    </div>
+                    <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5-12.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/echurricanes" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="https://instagram.com/echurricanes" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://tiktok.com/@echurricanes" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="calendar.html">Schedule</a></li>
+                        <li><a href="staff.html">Coaches</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="signup.html">Register</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-info">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </span>
+                            <span>506 NC-306, Grantsboro, NC 28529</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </span>
+                            <span>(252) 670-6707</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </span>
+                            <span>ecyouthfootballcheer@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EC Hurricanes Youth Football & Cheer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ============================================
+    // RAIN EFFECT
+    // ============================================
+    function createRainDrop() {
+        const container = document.getElementById('rainContainer');
+        if (!container) return;
+        
+        const drop = document.createElement('div');
+        drop.className = 'rain-drop';
+        
+        const left = Math.random() * 100;
+        const height = 10 + Math.random() * 20;
+        const width = 1 + Math.random() * 1;
+        const duration = 0.5 + Math.random() * 0.5;
+        const delay = Math.random() * 2;
+        const opacity = 0.3 + Math.random() * 0.4;
+        
+        drop.style.cssText = `
+            left: ${left}%;
+            height: ${height}px;
+            width: ${width}px;
+            animation-duration: ${duration}s;
+            animation-delay: ${delay}s;
+            opacity: ${opacity};
+        `;
+        
+        container.appendChild(drop);
+        
+        setTimeout(() => {
+            drop.remove();
+            createRainDrop();
+        }, (duration + delay) * 1000);
+    }
+
+    // Initialize rain
+    for (let i = 0; i < 100; i++) {
+        setTimeout(createRainDrop, i * 50);
+    }
+
+    // ============================================
+    // LIGHTNING EFFECT
+    // ============================================
+    function triggerLightning() {
+        const flash = document.querySelector('.lightning-flash');
+        if (!flash) return;
+        
+        if (Math.random() > 0.3) {
+            flash.classList.add('flash');
+            setTimeout(() => flash.classList.remove('flash'), 150);
+            
+            if (Math.random() > 0.7) {
+                setTimeout(() => {
+                    flash.classList.add('flash');
+                    setTimeout(() => flash.classList.remove('flash'), 150);
+                }, 100);
+            }
+        }
+        
+        setTimeout(triggerLightning, 3000 + Math.random() * 7000);
+    }
+
+    setTimeout(triggerLightning, 2000);
+
+    // ============================================
+    // CALENDAR
+    // ============================================
+    const calendarGrid = document.getElementById('calendarGrid');
+    const calendarMonth = document.getElementById('calendarMonth');
+    const prevBtn = document.getElementById('prevMonth');
+    const nextBtn = document.getElementById('nextMonth');
+
+    let currentDate = new Date();
+
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'];
+
+    function renderCalendar() {
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        
+        calendarMonth.textContent = `${monthNames[month]} ${year}`;
+        
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const startDate = new Date(firstDay);
+        startDate.setDate(startDate.getDate() - firstDay.getDay());
+        
+        calendarGrid.innerHTML = '';
+        
+        const today = new Date();
+        
+        for (let i = 0; i < 42; i++) {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + i);
+            
+            const dayEl = document.createElement('div');
+            dayEl.className = 'calendar-day';
+            dayEl.textContent = date.getDate();
+            
+            if (date.getMonth() !== month) {
+                dayEl.classList.add('other-month');
+            }
+            
+            if (date.toDateString() === today.toDateString()) {
+                dayEl.classList.add('today');
+            }
+            
+            calendarGrid.appendChild(dayEl);
+        }
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+
+    renderCalendar();
+
+    // ============================================
+    // MOBILE MENU
+    // ============================================
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileToggle.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileToggle.classList.remove('active');
+        });
+    });
+    </script>
+</body>
+</html>
