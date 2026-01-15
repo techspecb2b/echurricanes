@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coaches | EC Hurricanes Youth Football & Cheer</title>
+    <title>Staff | EC Hurricanes Youth Football & Cheer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -697,7 +697,7 @@ a {
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="calendar.html">Schedule</a></li>
-                <li><a href="staff.html" class="active">Coaches</a></li>
+                <li><a href="staff.html" class="active">Staff</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="signup.html" class="nav-cta">Join the Team</a></li>
             </ul>
@@ -711,7 +711,7 @@ a {
             <div class="rain-container" id="rainContainer"></div>
         </div>
         <div class="page-header-content">
-            <h1>OUR COACHES</h1>
+            <h1>OUR STAFF</h1>
             <p>Meet the dedicated leaders who guide our young athletes to success on and off the field.</p>
         </div>
     </header>
@@ -721,7 +721,7 @@ a {
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Leadership Team</p>
-                <h2 class="section-title">COACHING STAFF</h2>
+                <h2 class="section-title">COACHING STAFF & BOARD OF DIRECTORS</h2>
             </div>
             
             <div class="staff-grid">
@@ -751,6 +751,38 @@ a {
                     <h3>Brandon Talbert</h3>
                     <p class="staff-role">Marketing Director / 8U Head Coach</p>
                     <p>Dedicated to growing our program and coaching the next generation of Hurricane athletes.</p>
+                    <div class="staff-certifications">
+                        <span>AYFCA Certified</span>
+                        <span>USA Football</span>
+                    </div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Jeff Robinson</h3>
+                    <p class="staff-role">Fundraising Coordinator / 10U Assistant Coach</p>
+                    <p>Supporting our organization's growth through fundraising efforts while developing young athletes on the field.</p>
+                    <div class="staff-certifications">
+                        <span>AYFCA Certified</span>
+                        <span>USA Football</span>
+                    </div>
+                </div>
+                
+                <div class="staff-card">
+                    <div class="staff-photo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Desheun Smith</h3>
+                    <p class="staff-role">10U Assistant Coach</p>
+                    <p>Bringing energy and expertise to help develop the next generation of Hurricane football players.</p>
                     <div class="staff-certifications">
                         <span>AYFCA Certified</span>
                         <span>USA Football</span>
@@ -862,7 +894,7 @@ a {
                             <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
                         </div>
                     </div>
-                    <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5-12.</p>
+                    <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5-14.</p>
                     <div class="social-links">
                         <a href="https://facebook.com/echurricanes" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -888,7 +920,7 @@ a {
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="calendar.html">Schedule</a></li>
-                        <li><a href="staff.html">Coaches</a></li>
+                        <li><a href="staff.html">Staff</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="signup.html">Register</a></li>
                     </ul>
@@ -920,7 +952,7 @@ a {
                                     <polyline points="22,6 12,13 2,6"/>
                                 </svg>
                             </span>
-                            <span>ecyouthfootballcheer@gmail.com</span>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402523392f353428262f2f3422212c2c232825253200272d21292c6e232f2d">[email&#160;protected]</a></span>
                         </li>
                     </ul>
                 </div>
@@ -931,7 +963,7 @@ a {
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Rain Effect
     function createRainDrop() {
         const container = document.getElementById('rainContainer');
@@ -973,11 +1005,11 @@ a {
         const flash = document.querySelector('.lightning-flash');
         if (!flash) return;
         
-        if (Math.random() > 0.3) {
+        if (Math.random() > 0.2) {
             flash.classList.add('flash');
             setTimeout(() => flash.classList.remove('flash'), 150);
             
-            if (Math.random() > 0.7) {
+            if (Math.random() > 0.6) {
                 setTimeout(() => {
                     flash.classList.add('flash');
                     setTimeout(() => flash.classList.remove('flash'), 150);
@@ -985,7 +1017,7 @@ a {
             }
         }
         
-        setTimeout(triggerLightning, 3000 + Math.random() * 7000);
+        setTimeout(triggerLightning, 2000 + Math.random() * 3000);
     }
 
     setTimeout(triggerLightning, 2000);
@@ -999,12 +1031,4 @@ a {
         mobileToggle.classList.toggle('active');
     });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileToggle.classList.remove('active');
-        });
-    });
-    </script>
-</body>
-</html>
+    document.querySele
