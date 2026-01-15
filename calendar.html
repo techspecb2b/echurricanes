@@ -855,7 +855,7 @@ a {
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="calendar.html" class="active">Schedule</a></li>
-                <li><a href="staff.html">Coaches</a></li>
+                <li><a href="staff.html">Staff</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="signup.html" class="nav-cta">Join the Team</a></li>
             </ul>
@@ -1018,39 +1018,39 @@ a {
             <div class="practice-grid">
                 <div class="practice-card">
                     <div class="practice-icon">
-                        <svg viewBox="0 0 48 48" fill="currentColor">
-                            <path d="M2 24 Q24 4 46 24 Q24 44 2 24Z"/>
-                            <line x1="24" y1="14" x2="24" y2="34" stroke="#0a0a0a" stroke-width="2"/>
-                            <line x1="20" y1="18" x2="28" y2="18" stroke="#0a0a0a" stroke-width="2"/>
-                            <line x1="20" y1="24" x2="28" y2="24" stroke="#0a0a0a" stroke-width="2"/>
-                            <line x1="20" y1="30" x2="28" y2="30" stroke="#0a0a0a" stroke-width="2"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12 Q12 2 22 12 Q12 22 2 12Z"/>
+                            <line x1="9" y1="12" x2="15" y2="12" stroke-width="1.5"/>
+                            <line x1="10" y1="10" x2="10" y2="14" stroke-width="1.5"/>
+                            <line x1="12" y1="10" x2="12" y2="14" stroke-width="1.5"/>
+                            <line x1="14" y1="10" x2="14" y2="14" stroke-width="1.5"/>
                         </svg>
                     </div>
-                    <h4>8U Football</h4>
+                    <h4>6U & 8U Football</h4>
                     <p class="days">Tuesday & Thursday</p>
                     <p class="time">5:30 PM - 7:00 PM</p>
                 </div>
                 
                 <div class="practice-card">
                     <div class="practice-icon">
-                        <svg viewBox="0 0 48 48" fill="currentColor">
-                            <path d="M2 24 Q24 4 46 24 Q24 44 2 24Z"/>
-                            <line x1="24" y1="14" x2="24" y2="34" stroke="#0a0a0a" stroke-width="2"/>
-                            <line x1="20" y1="18" x2="28" y2="18" stroke="#0a0a0a" stroke-width="2"/>
-                            <line x1="20" y1="24" x2="28" y2="24" stroke="#0a0a0a" stroke-width="2"/>
-                            <line x1="20" y1="30" x2="28" y2="30" stroke="#0a0a0a" stroke-width="2"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 12 Q12 2 22 12 Q12 22 2 12Z"/>
+                            <line x1="9" y1="12" x2="15" y2="12" stroke-width="1.5"/>
+                            <line x1="10" y1="10" x2="10" y2="14" stroke-width="1.5"/>
+                            <line x1="12" y1="10" x2="12" y2="14" stroke-width="1.5"/>
+                            <line x1="14" y1="10" x2="14" y2="14" stroke-width="1.5"/>
                         </svg>
                     </div>
-                    <h4>10/12U Football</h4>
+                    <h4>10U & 12U Football</h4>
                     <p class="days">Monday, Wednesday & Friday</p>
                     <p class="time">5:30 PM - 7:30 PM</p>
                 </div>
                 
                 <div class="practice-card">
                     <div class="practice-icon">
-                        <svg viewBox="0 0 48 48" fill="currentColor">
-                            <path d="M4 16 L4 32 L36 44 L36 4 Z"/>
-                            <rect x="36" y="18" width="8" height="12" rx="2"/>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m3 11 18-5v12L3 13v-2z"/>
+                            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
                         </svg>
                     </div>
                     <h4>Cheerleading</h4>
@@ -1077,7 +1077,7 @@ a {
                             <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
                         </div>
                     </div>
-                    <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5-12.</p>
+                    <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5-14.</p>
                     <div class="social-links">
                         <a href="https://facebook.com/echurricanes" aria-label="Facebook">
                             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -1103,7 +1103,7 @@ a {
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="calendar.html">Schedule</a></li>
-                        <li><a href="staff.html">Coaches</a></li>
+                        <li><a href="staff.html">Staff</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="signup.html">Register</a></li>
                     </ul>
@@ -1193,11 +1193,11 @@ a {
         const flash = document.querySelector('.lightning-flash');
         if (!flash) return;
         
-        if (Math.random() > 0.3) {
+        if (Math.random() > 0.2) {
             flash.classList.add('flash');
             setTimeout(() => flash.classList.remove('flash'), 150);
             
-            if (Math.random() > 0.7) {
+            if (Math.random() > 0.6) {
                 setTimeout(() => {
                     flash.classList.add('flash');
                     setTimeout(() => flash.classList.remove('flash'), 150);
@@ -1205,7 +1205,7 @@ a {
             }
         }
         
-        setTimeout(triggerLightning, 3000 + Math.random() * 7000);
+        setTimeout(triggerLightning, 2000 + Math.random() * 3000);
     }
 
     setTimeout(triggerLightning, 2000);
