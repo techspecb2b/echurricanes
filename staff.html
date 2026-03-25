@@ -902,127 +902,98 @@ a {
 
     <script>
 
-    document.addEventListener('DOMContentLoaded', function() {
-
     var SB_URL = 'https://aeuhufgbmoydxrnryspm.supabase.co';
     var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldWh1ZmdibW95ZHhybnJ5c3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDcwNDUsImV4cCI6MjA4Njc4MzA0NX0.gPrLwTjaeBB-b82iSbNI1G023IOPX2std3fmkfsXb3A';
 
-    function sbGet(table, query) {
-        var url = SB_URL + '/rest/v1/' + table + (query ? '?' + query : '');
-        return fetch(url, {
+    function loadStaff() {
+        var grid = document.getElementById('staffGrid');
+        if (!grid) { console.error('staffGrid not found'); return; }
+        grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#707070">Loading staff...</p>';
+
+        fetch(SB_URL + '/rest/v1/ec_staff?order=sort_order.asc', {
             method: 'GET',
             headers: {
                 'apikey': SB_KEY,
                 'Authorization': 'Bearer ' + SB_KEY,
                 'Accept': 'application/json'
             }
-        }).then(function(r) {
-            if (!r.ok) {
-                return r.text().then(function(t) { throw new Error(r.status + ' ' + t); });
-            }
-            return r.json();
-        });
-    }
-
-    function renderStaff() {
-        var grid = document.getElementById('staffGrid');
-        if (!grid) return;
-        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Loading...</div>';
-
-        sbGet('ec_staff', 'order=sort_order.asc').then(function(staff) {
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(staff) {
             if (!staff || !staff.length) {
-                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">No staff listed.</div>';
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#707070">No staff listed.</p>';
                 return;
             }
             var html = '';
             staff.forEach(function(s) {
-                var photoHtml = s.photo_url
+                var photo = s.photo_url
                     ? '<img src="' + s.photo_url + '" alt="' + s.name + '">'
                     : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
-
-                var certs = (s.certifications || '').split(',').map(function(c) { return c.trim(); }).filter(Boolean);
+                var certs = (s.certifications || '').split(',').map(function(c){ return c.trim(); }).filter(Boolean);
                 var certHtml = certs.length
-                    ? '<div class="staff-certifications">' + certs.map(function(c) { return '<span>' + c + '</span>'; }).join('') + '</div>'
+                    ? '<div class="staff-certifications">' + certs.map(function(c){ return '<span>' + c + '</span>'; }).join('') + '</div>'
                     : '';
-
                 html += '<div class="staff-card">'
-                    + '<div class="staff-photo">' + photoHtml + '</div>'
+                    + '<div class="staff-photo">' + photo + '</div>'
                     + '<div class="staff-card-body">'
                     + '<h3>' + s.name + '</h3>'
                     + '<p class="staff-role">' + s.role + '</p>'
                     + '<p>' + (s.bio || '') + '</p>'
                     + certHtml
-                    + '</div>'
-                    + '</div>';
+                    + '</div></div>';
             });
             grid.innerHTML = html;
-        }).catch(function(err) {
-            console.error('EC Hurricanes staff load error:', err);
-            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Could not load staff. Please refresh.</div>';
+        })
+        .catch(function(err) {
+            console.error('Staff load error:', err);
+            grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:40px;color:#707070">Could not load staff. Please refresh.</p>';
         });
     }
 
-    renderStaff();
+    loadStaff();
 
-    }); // end DOMContentLoaded
-
-    // Rain Effect
+    // Rain
     function createRainDrop() {
-        const container = document.getElementById('rainContainer');
-        if (!container) return;
-        
-        const drop = document.createElement('div');
-        drop.className = 'rain-drop';
-        
-        const left = Math.random() * 100;
-        const height = 10 + Math.random() * 20;
-        const width = 1 + Math.random() * 1;
-        const duration = 0.5 + Math.random() * 0.5;
-        const delay = Math.random() * 2;
-        const opacity = 0.3 + Math.random() * 0.4;
-        
-        drop.style.cssText = `
-            left: ${left}%;
-            height: ${height}px;
-            width: ${width}px;
-            animation-duration: ${duration}s;
-            animation-delay: ${delay}s;
-            opacity: ${opacity};
-        `;
-        
-        container.appendChild(drop);
-        
-        setTimeout(() => {
-            drop.remove();
-            createRainDrop();
-        }, (duration + delay) * 1000);
+        var c = document.getElementById('rainContainer');
+        if (!c) return;
+        var d = document.createElement('div');
+        d.className = 'rain-drop';
+        var dur = 0.5 + Math.random() * 0.5;
+        var delay = Math.random() * 2;
+        d.style.cssText = 'left:' + (Math.random()*100) + '%;height:' + (10+Math.random()*20) + 'px;width:' + (1+Math.random()) + 'px;animation-duration:' + dur + 's;animation-delay:' + delay + 's;opacity:' + (0.3+Math.random()*0.4) + ';';
+        c.appendChild(d);
+        setTimeout(function(){ d.remove(); createRainDrop(); }, (dur+delay)*1000);
     }
+    for (var i = 0; i < 80; i++) setTimeout(createRainDrop, i * 50);
 
-    for (let i = 0; i < 100; i++) {
-        setTimeout(createRainDrop, i * 50);
-    }
-
-    // Lightning Effect
+    // Lightning
     function triggerLightning() {
-        const flash = document.querySelector('.lightning-flash');
-        if (!flash) return;
-        
+        var f = document.querySelector('.lightning-flash');
+        if (!f) return;
         if (Math.random() > 0.2) {
-            flash.classList.add('flash');
-            setTimeout(() => flash.classList.remove('flash'), 150);
-            
-            if (Math.random() > 0.6) {
-                setTimeout(() => {
-                    flash.classList.add('flash');
-                    setTimeout(() => flash.classList.remove('flash'), 150);
-                }, 100);
-            }
+            f.classList.add('flash');
+            setTimeout(function(){ f.classList.remove('flash'); }, 150);
         }
-        
         setTimeout(triggerLightning, 2000 + Math.random() * 3000);
     }
-
     setTimeout(triggerLightning, 2000);
 
-    // Mobile Menu
-    const mobileToggle = document.querySelector('.mobile-toggle
+    // Mobile menu
+    var mobileToggle = document.querySelector('.mobile-toggle');
+    var navLinks = document.querySelector('.nav-links');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            mobileToggle.classList.toggle('active');
+        });
+    }
+    document.querySelectorAll('.nav-links a').forEach(function(a) {
+        a.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            if (mobileToggle) mobileToggle.classList.remove('active');
+        });
+    });
+
+    </script>
+</body>
+</html>
