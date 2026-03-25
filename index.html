@@ -539,6 +539,12 @@ img {
     letter-spacing: 2px;
     text-transform: uppercase;
     animation: bounce 2s ease-in-out infinite;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@media (max-height: 600px) {
+    .scroll-indicator { display: none; }
 }
 
 .scroll-indicator::after {
@@ -1274,7 +1280,7 @@ section {
 @media (max-width: 1024px) {
     .about-grid {
         grid-template-columns: 1fr;
-        gap: 60px;
+        gap: 40px;
     }
     
     .about-visual {
@@ -1326,7 +1332,8 @@ section {
     
     .hero-stats {
         flex-direction: column;
-        gap: 24px;
+        gap: 20px;
+        align-items: center;
     }
     
     .stat-divider {
@@ -1334,8 +1341,21 @@ section {
         height: 1px;
     }
     
+    .stat {
+        width: 100%;
+        text-align: center;
+    }
+    
     section {
-        padding: 60px 0;
+        padding: 50px 0;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
+    
+    .about-content p {
+        font-size: 15px;
     }
     
     .events-grid {
@@ -1389,6 +1409,35 @@ section {
     
     .event-date {
         align-self: center;
+    }
+    
+    .scroll-indicator {
+        bottom: 16px;
+        font-size: 9px;
+    }
+    
+    .hero-stats {
+        gap: 16px;
+        padding: 0 16px;
+    }
+    
+    .stat-number {
+        font-size: 36px;
+    }
+    
+    .title-line {
+        font-size: clamp(32px, 9vw, 72px);
+        letter-spacing: 2px;
+    }
+    
+    .title-accent {
+        font-size: clamp(56px, 14vw, 120px);
+        letter-spacing: 4px;
+    }
+    
+    .hero-subtitle {
+        font-size: 15px;
+        padding: 0 8px;
     }
 }
     </style>

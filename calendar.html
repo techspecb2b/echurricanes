@@ -780,6 +780,25 @@ a {
     .mobile-toggle {
         display: flex;
     }
+    
+    .calendar-grid-header span,
+    .calendar-day {
+        font-size: 12px;
+        padding: 6px 2px;
+    }
+    
+    .calendar-day {
+        aspect-ratio: auto;
+        min-height: 38px;
+    }
+    
+    .practice-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
 
     .nav-links {
         position: fixed;
@@ -1223,14 +1242,27 @@ a {
     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'];
 
+
+    const SB_URL = 'https://aeuhufgbmoydxrnryspm.supabase.co';
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldWh1ZmdibW95ZHhybnJ5c3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDcwNDUsImV4cCI6MjA4Njc4MzA0NX0.gPrLwTjaeBB-b82iSbNI1G023IOPX2std3fmkfsXb3A';
+
+    async function sbGet(table, query='') {
+        const r = await fetch(SB_URL + '/rest/v1/' + table + (query ? '?' + query : ''), {
+            headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+        });
+        return r.ok ? r.json() : [];
+    }
+
+    function getAdminEvents() { return []; } // deprecated, use loadSupabaseEvents
+
     function renderCalendar() {
         const year = currentDate.getFullYear();
         const month = currentDate.getMonth();
+        const events = getAdminEvents();
         
         calendarMonth.textContent = `${monthNames[month]} ${year}`;
         
         const firstDay = new Date(year, month, 1);
-        const lastDay = new Date(year, month + 1, 0);
         const startDate = new Date(firstDay);
         startDate.setDate(startDate.getDate() - firstDay.getDay());
         
@@ -1244,7 +1276,9 @@ a {
             
             const dayEl = document.createElement('div');
             dayEl.className = 'calendar-day';
-            dayEl.textContent = date.getDate();
+            
+            const dayStr = date.toISOString().slice(0, 10);
+            const dayEvents = events.filter(e => e.date === dayStr);
             
             if (date.getMonth() !== month) {
                 dayEl.classList.add('other-month');
@@ -1254,9 +1288,126 @@ a {
                 dayEl.classList.add('today');
             }
             
+            if (dayEvents.length > 0) {
+                dayEl.classList.add('has-event');
+                dayEl.title = dayEvents.map(e => e.title).join(', ');
+                dayEl.style.cursor = 'pointer';
+                dayEl.innerHTML = `<span>${date.getDate()}</span><span style="display:block;width:6px;height:6px;background:var(--gold-primary);border-radius:50%;margin:2px auto 0;"></span>`;
+                
+                // Click to show event details
+                dayEl.addEventListener('click', () => {
+                    const info = dayEvents.map(e => `${e.title}${e.time?' at '+e.time:''}${e.location?' · '+e.location:''}`).join('\n');
+                    alert(info);
+                });
+            } else {
+                dayEl.textContent = date.getDate();
+            }
+            
+            dayEl._date = date;
             calendarGrid.appendChild(dayEl);
         }
     }
+    
+    // Render admin events in timeline
+    function renderAdminEvents() {
+        const events = getAdminEvents().sort((a,b) => new Date(a.date)-new Date(b.date));
+        const now = new Date();
+        const upcoming = events.filter(e => new Date(e.date+'T00:00:00') >= new Date(now.toDateString()));
+        
+        const timeline = document.querySelector('.events-timeline');
+        if (!timeline) return;
+        
+        if (upcoming.length === 0) return; // keep placeholder events visible
+        
+        // Build admin events at the top
+        const adminHtml = upcoming.map(e => {
+            const d = new Date(e.date+'T00:00:00');
+            const mo = d.toLocaleDateString('en-US',{month:'short'}).toUpperCase();
+            const yr = d.getFullYear();
+            const typeColors = {game:'#ef4444',practice:'#3b82f6',event:'#22c55e',other:'#a855f7'};
+            const color = typeColors[e.type] || typeColors.other;
+            return `
+                <div class="timeline-item">
+                    <div class="timeline-marker" style="border-color:${color};box-shadow:0 0 10px ${color}40;"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date" style="background:${color}22;border:1px solid ${color}44;border-radius:8px;padding:12px 16px;text-align:center;flex-shrink:0;min-width:80px;">
+                            <span class="month" style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:${color};">${mo}</span>
+                            <span class="year" style="display:block;font-family:var(--font-display);font-size:28px;color:var(--text-primary);line-height:1;">${d.getDate()}</span>
+                            <span style="font-size:10px;color:var(--text-muted);">${yr}</span>
+                        </div>
+                        <div class="timeline-info">
+                            <h4>${e.title}</h4>
+                            ${e.desc ? `<p>${e.desc}</p>` : ''}
+                            ${e.time ? `<span class="timeline-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${e.time}</span>` : ''}
+                            ${e.location ? `<span class="timeline-location" style="margin-left:${e.time?'12px':'0'};"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${e.location}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        // Prepend admin events to timeline
+        timeline.insertAdjacentHTML('afterbegin', adminHtml);
+    }
+    
+    // Load events from Supabase and render in timeline
+    async function loadSupabaseEvents() {
+        const today = new Date().toISOString().slice(0, 10);
+        const events = await sbGet('ec_events', 'date=gte.' + today + '&order=date.asc');
+        if (!events.length) return;
+        const timeline = document.querySelector('.events-timeline');
+        if (!timeline) return;
+        const tc = {game:'#ef4444',practice:'#3b82f6',event:'#22c55e',other:'#a855f7'};
+        const html = events.map(e => {
+            const d = new Date(e.date + 'T00:00:00');
+            const mo = d.toLocaleDateString('en-US',{month:'short'}).toUpperCase();
+            const color = tc[e.type] || tc.other;
+            return `
+                <div class="timeline-item">
+                    <div class="timeline-marker" style="border-color:${color};box-shadow:0 0 10px ${color}40;"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date" style="background:${color}20;border:1px solid ${color}44;border-radius:8px;padding:12px 16px;text-align:center;flex-shrink:0;min-width:80px;">
+                            <span style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:${color};">${mo}</span>
+                            <span style="display:block;font-family:var(--font-display);font-size:28px;color:var(--text-primary);line-height:1;">${d.getDate()}</span>
+                            <span style="font-size:10px;color:var(--text-muted);">${d.getFullYear()}</span>
+                        </div>
+                        <div class="timeline-info">
+                            <h4>${e.title}</h4>
+                            ${e.description ? `<p>${e.description}</p>` : ''}
+                            ${e.time ? `<span class="timeline-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${e.time}</span>` : ''}
+                            ${e.location ? `<span class="timeline-location" style="margin-left:${e.time?'12px':'0'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${e.location}</span>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        timeline.insertAdjacentHTML('afterbegin', html);
+    }
+
+    loadSupabaseEvents();
+
+    // Also update calendar grid to mark event days
+    const _origRender = renderCalendar;
+    renderCalendar = async function() {
+        _origRender();
+        const events = await sbGet('ec_events', 'order=date.asc');
+        events.forEach(ev => {
+            const cells = document.querySelectorAll('.calendar-day');
+            cells.forEach(cell => {
+                const d = cell._date;
+                if (d && d.toISOString().slice(0,10) === ev.date) {
+                    cell.classList.add('has-event');
+                    cell.title = (cell.title ? cell.title + ', ' : '') + ev.title;
+                    if (!cell.querySelector('.ev-dot')) {
+                        const dot = document.createElement('span');
+                        dot.className = 'ev-dot';
+                        dot.style.cssText = 'display:block;width:5px;height:5px;background:var(--gold-primary);border-radius:50%;margin:2px auto 0;';
+                        cell.appendChild(dot);
+                    }
+                }
+            });
+        });
+    };
 
     prevBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);

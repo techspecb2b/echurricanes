@@ -8,10 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-/* ================================================
-   EC HURRICANES - Storm Theme (Black & Gold)
-   ================================================ */
-
 :root {
     --storm-dark: #0a0a0a;
     --storm-darker: #050505;
@@ -32,1206 +28,922 @@
     --transition-fast: 0.2s ease;
     --transition-medium: 0.4s ease;
 }
-
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
-body {
-    font-family: var(--font-body);
-    background: var(--storm-dark);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
+body { font-family: var(--font-body); background: var(--storm-dark); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; transition: var(--transition-fast); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* Navigation */
-.main-nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    padding: 16px 0;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 215, 0, 0.1);
-}
-
-.nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
+/* NAV */
+.main-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 16px 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,215,0,0.1); }
+.nav-container { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
 .logo { display: flex; align-items: center; gap: 12px; }
-
-.logo-icon {
-    width: 28px; height: 28px;
-    color: var(--gold-primary);
-    filter: drop-shadow(0 0 10px var(--gold-glow));
-}
-
+.logo-icon { width: 28px; height: 28px; color: var(--gold-primary); filter: drop-shadow(0 0 10px var(--gold-glow)); }
 .logo-icon svg { width: 100%; height: 100%; }
 .logo-text { display: flex; flex-direction: column; }
-
-.logo-main {
-    font-family: var(--font-display);
-    font-size: 24px;
-    letter-spacing: 2px;
-    line-height: 1;
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.logo-sub {
-    font-family: var(--font-heading);
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--text-secondary);
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    list-style: none;
-}
-
-.nav-links a {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    position: relative;
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 2px;
-    background: var(--gradient-gold);
-    transition: var(--transition-fast);
-}
-
+.logo-main { font-family: var(--font-display); font-size: 24px; letter-spacing: 2px; line-height: 1; background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.logo-sub { font-family: var(--font-heading); font-size: 10px; letter-spacing: 3px; color: var(--text-secondary); }
+.nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+.nav-links a { font-family: var(--font-heading); font-size: 14px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); position: relative; }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gradient-gold); transition: var(--transition-fast); }
 .nav-links a:hover, .nav-links a.active { color: var(--gold-primary); }
 .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-
-.nav-cta {
-    padding: 12px 24px !important;
-    background: var(--gradient-gold);
-    border-radius: 6px;
-    color: var(--storm-dark) !important;
-    font-weight: 600 !important;
-}
-
+.nav-cta { padding: 12px 24px !important; background: var(--gradient-gold); border-radius: 6px; color: var(--storm-dark) !important; font-weight: 600 !important; }
 .nav-cta::after { display: none !important; }
 .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--gold-glow); }
+.mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.mobile-toggle span { width: 24px; height: 2px; background: var(--gold-primary); transition: var(--transition-fast); }
 
-.mobile-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-}
-
-.mobile-toggle span {
-    width: 24px; height: 2px;
-    background: var(--gold-primary);
-    transition: var(--transition-fast);
-}
-
-/* Page Header */
-.page-header {
-    position: relative;
-    min-height: 50vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background: linear-gradient(180deg, var(--storm-darker) 0%, var(--storm-dark) 100%);
-    padding-top: 80px;
-}
-
-.storm-container {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    overflow: hidden;
-}
-
-.rain-container {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    overflow: hidden;
-}
-
-.rain-drop {
-    position: absolute;
-    top: -20px;
-    background: linear-gradient(180deg, transparent, rgba(255, 215, 0, 0.3));
-    border-radius: 0 0 2px 2px;
-    animation: rainFall linear infinite;
-}
-
+/* PAGE HEADER */
+.page-header { position: relative; min-height: 40vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(180deg, var(--storm-darker) 0%, var(--storm-dark) 100%); padding-top: 80px; }
+.storm-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; }
+.rain-container { position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; }
+.rain-drop { position: absolute; top: -20px; background: linear-gradient(180deg, transparent, rgba(255,215,0,0.3)); border-radius: 0 0 2px 2px; animation: rainFall linear infinite; }
 @keyframes rainFall { to { transform: translateY(100vh); } }
-
-.lightning-flash {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(255, 215, 0, 0.15);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 5;
-}
-
+.lightning-flash { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,215,0,0.15); opacity: 0; pointer-events: none; z-index: 5; }
 .lightning-flash.flash { animation: lightningFlash 0.15s ease-out; }
+@keyframes lightningFlash { 0%{opacity:0} 10%{opacity:1} 20%{opacity:0.3} 30%{opacity:0.8} 100%{opacity:0} }
+.page-header-content { position: relative; z-index: 10; text-align: center; padding: 40px 24px; }
+.page-header h1 { font-family: var(--font-display); font-size: clamp(40px, 9vw, 72px); letter-spacing: 4px; margin-bottom: 12px; background: var(--gradient-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.page-header p { font-size: 16px; color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
 
-@keyframes lightningFlash {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    20% { opacity: 0.3; }
-    30% { opacity: 0.8; }
-    100% { opacity: 0; }
-}
+/* REGISTRATION */
+.registration-section { padding: 60px 0 80px; position: relative; }
+.registration-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.92) 100%), url('field-bg.png'); background-size: cover; background-position: center; pointer-events: none; }
+.registration-section > .container { position: relative; z-index: 1; }
 
-.page-header-content {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 60px 24px;
-}
+/* PROGRESS */
+.progress-wrap { overflow-x: auto; padding-bottom: 8px; margin-bottom: 40px; -webkit-overflow-scrolling: touch; }
+.progress-steps { display: flex; justify-content: center; gap: 4px; min-width: 500px; width: fit-content; margin: 0 auto; }
+.step { display: flex; align-items: center; gap: 8px; }
+.step-number { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); border: 2px solid rgba(255,255,255,0.1); border-radius: 50%; font-family: var(--font-heading); font-size: 15px; font-weight: 600; transition: var(--transition-fast); flex-shrink: 0; }
+.step.active .step-number { background: var(--gradient-gold); border-color: var(--gold-primary); color: var(--storm-dark); }
+.step.completed .step-number { background: var(--gold-dark); border-color: var(--gold-dark); color: var(--storm-dark); }
+.step-label { font-family: var(--font-heading); font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+.step.active .step-label, .step.completed .step-label { color: var(--gold-primary); }
+.step-connector { width: 40px; height: 2px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+.step-connector.completed { background: var(--gold-primary); }
 
-.page-header h1 {
-    font-family: var(--font-display);
-    font-size: clamp(48px, 10vw, 80px);
-    letter-spacing: 4px;
-    margin-bottom: 16px;
-    background: var(--gradient-gold);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+/* FORM */
+.form-container { max-width: 780px; margin: 0 auto; background: rgba(5,5,5,0.95); border: 1px solid rgba(255,215,0,0.15); border-radius: 16px; padding: 48px; }
+.form-step { display: none; }
+.form-step.active { display: block; }
+.form-step h2 { font-family: var(--font-display); font-size: 28px; letter-spacing: 2px; margin-bottom: 6px; }
+.form-step > .step-desc { color: var(--text-secondary); margin-bottom: 32px; font-size: 14px; }
+.form-section-title { font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-primary); margin: 32px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,215,0,0.2); }
+.form-section-title:first-of-type { margin-top: 0; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-family: var(--font-heading); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 8px; }
+.form-group label .req { color: var(--gold-primary); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-family: var(--font-body); font-size: 14px; transition: var(--transition-fast); }
+.form-group select option { background: var(--storm-gray); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold-primary); background: rgba(255,215,0,0.04); }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.form-group textarea { min-height: 90px; resize: vertical; }
 
-.page-header p {
-    font-size: 18px;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto;
-}
+/* PROGRAM SELECTOR */
+.program-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 4px; }
+.program-card-opt { padding: 20px; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; cursor: pointer; transition: var(--transition-fast); text-align: center; }
+.program-card-opt:hover { border-color: rgba(255,215,0,0.4); }
+.program-card-opt.selected { border-color: var(--gold-primary); background: rgba(255,215,0,0.07); }
+.program-card-opt h4 { font-family: var(--font-heading); font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.program-card-opt p { font-size: 12px; color: var(--text-muted); }
+.program-card-opt input[type=radio] { display: none; }
 
-/* Registration Section */
-.registration-section {
-    padding: 80px 0;
-    position: relative;
-}
+/* WAIVER */
+.waiver-box { max-height: 220px; overflow-y: auto; padding: 20px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; margin-bottom: 20px; scrollbar-width: thin; scrollbar-color: var(--gold-dark) transparent; }
+.waiver-box::-webkit-scrollbar { width: 6px; }
+.waiver-box::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+.waiver-box h4 { font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--gold-primary); margin-bottom: 12px; }
+.waiver-box p { font-size: 12px; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.6; }
+.waiver-box ol, .waiver-box ul { padding-left: 20px; margin-bottom: 10px; }
+.waiver-box li { font-size: 12px; color: var(--text-secondary); margin-bottom: 6px; line-height: 1.5; }
 
-.registration-section.field-bg::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: 
-        linear-gradient(180deg, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0.85) 50%, rgba(10,10,10,0.92) 100%),
-        url('field-bg.png');
-    background-size: cover;
-    background-position: center;
-    pointer-events: none;
-}
+/* INITIALS ROW */
+.initials-row { display: flex; align-items: center; gap: 12px; margin: 12px 0; padding: 12px 16px; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); }
+.initials-row label { font-family: var(--font-heading); font-size: 12px; color: var(--text-secondary); flex: 1; letter-spacing: 1px; }
+.initials-input { width: 80px; padding: 8px 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,215,0,0.3); border-radius: 6px; color: var(--text-primary); font-family: var(--font-body); font-size: 14px; text-align: center; }
+.initials-input:focus { outline: none; border-color: var(--gold-primary); }
 
-.registration-section > .container {
-    position: relative;
-    z-index: 1;
-}
+/* SIGNATURE PAD */
+.sig-section { margin: 20px 0; }
+.sig-section h4 { font-family: var(--font-heading); font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+.sig-section > p { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; }
+.sig-pad-wrap { position: relative; border: 1px solid rgba(255,215,0,0.25); border-radius: 8px; overflow: hidden; }
+.sig-canvas { background: rgba(255,255,255,0.02); display: block; width: 100%; height: 130px; cursor: crosshair; touch-action: none; }
+.sig-actions { display: flex; justify-content: flex-end; padding: 8px 12px; background: rgba(0,0,0,0.3); }
+.btn-clear { padding: 6px 14px; background: transparent; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--text-muted); font-family: var(--font-heading); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: var(--transition-fast); }
+.btn-clear:hover { border-color: var(--gold-primary); color: var(--gold-primary); }
 
-/* Progress Steps */
-.progress-steps {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 48px;
-}
+/* CHECKBOX */
+.checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin: 16px 0; }
+.checkbox-group input[type=checkbox] { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--gold-primary); flex-shrink: 0; }
+.checkbox-group label { font-size: 13px; color: var(--text-secondary); cursor: pointer; line-height: 1.5; }
 
-.step {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+/* REVIEW */
+.review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+.review-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,215,0,0.1); border-radius: 12px; padding: 20px; }
+.review-card h4 { font-family: var(--font-heading); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-primary); margin-bottom: 14px; }
+.review-row { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 13px; }
+.review-row .lbl { color: var(--text-muted); }
+.review-row .val { color: var(--text-primary); text-align: right; max-width: 60%; }
 
-.step-number {
-    width: 40px; height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    font-family: var(--font-heading);
-    font-size: 16px;
-    font-weight: 600;
-    transition: var(--transition-fast);
-}
-
-.step.active .step-number {
-    background: var(--gradient-gold);
-    border-color: var(--gold-primary);
-    color: var(--storm-dark);
-}
-
-.step.completed .step-number {
-    background: var(--gold-dark);
-    border-color: var(--gold-dark);
-    color: var(--storm-dark);
-}
-
-.step-label {
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-
-.step.active .step-label,
-.step.completed .step-label {
-    color: var(--gold-primary);
-}
-
-.step-connector {
-    width: 60px;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.step-connector.completed {
-    background: var(--gold-primary);
-}
-
-/* Form Container */
-.form-container {
-    max-width: 700px;
-    margin: 0 auto;
-    background: rgba(5, 5, 5, 0.9);
-    border: 1px solid rgba(255, 215, 0, 0.15);
-    border-radius: 16px;
-    padding: 48px;
-}
-
-.form-step {
-    display: none;
-}
-
-.form-step.active {
-    display: block;
-}
-
-.form-step h2 {
-    font-family: var(--font-display);
-    font-size: 32px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-}
-
-.form-step > p {
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-}
-
-.form-group {
-    margin-bottom: 24px;
-}
-
-.form-group label {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: var(--text-primary);
-    font-family: var(--font-body);
-    font-size: 14px;
-    transition: var(--transition-fast);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--gold-primary);
-    background: rgba(255, 215, 0, 0.05);
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-/* Signature Pad */
-.signature-section {
-    margin: 32px 0;
-}
-
-.signature-section h4 {
-    font-family: var(--font-heading);
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 8px;
-}
-
-.signature-section > p {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 16px;
-}
-
-.signature-pad-container {
-    position: relative;
-    border: 1px solid rgba(255, 215, 0, 0.2);
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-#signaturePad {
-    background: rgba(255, 255, 255, 0.02);
-    display: block;
-    width: 100%;
-    height: 150px;
-    cursor: crosshair;
-}
-
-.signature-actions {
-    display: flex;
-    justify-content: flex-end;
-    padding: 8px;
-    background: rgba(0, 0, 0, 0.3);
-}
-
-.btn-clear {
-    padding: 8px 16px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    color: var(--text-secondary);
-    font-family: var(--font-heading);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: var(--transition-fast);
-}
-
-.btn-clear:hover {
-    border-color: var(--gold-primary);
-    color: var(--gold-primary);
-}
-
-/* Waiver Text */
-.waiver-text {
-    max-height: 200px;
-    overflow-y: auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    margin-bottom: 24px;
-}
-
-.waiver-text h4 {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: var(--gold-primary);
-}
-
-.waiver-text p {
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 12px;
-}
-
-/* Payment Options */
-.payment-options {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin: 32px 0;
-}
-
-.payment-option {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    padding: 24px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    text-decoration: none;
-    transition: var(--transition-fast);
-}
-
-.payment-option:hover {
-    background: rgba(255, 215, 0, 0.05);
-    border-color: var(--gold-primary);
-    transform: translateY(-4px);
-}
-
-.payment-icon {
-    width: 48px; height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 215, 0, 0.1);
-    border-radius: 10px;
-    color: var(--gold-primary);
-}
-
+/* PAYMENT */
+.payment-options { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+.payment-option { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; text-decoration: none; transition: var(--transition-fast); }
+.payment-option:hover { border-color: var(--gold-primary); background: rgba(255,215,0,0.05); transform: translateY(-3px); }
+.payment-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(255,215,0,0.1); border-radius: 10px; color: var(--gold-primary); }
 .payment-icon svg { width: 24px; height: 24px; }
+.payment-option span { font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 1px; }
 
-.payment-option span {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
+/* BUTTONS */
+.form-buttons { display: flex; gap: 16px; margin-top: 36px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 32px; font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; border: none; border-radius: 8px; cursor: pointer; transition: var(--transition-fast); }
+.btn-primary { flex: 1; background: var(--gradient-gold); color: var(--storm-dark); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px var(--gold-glow); }
+.btn-secondary { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: var(--text-secondary); }
+.btn-secondary:hover { border-color: var(--gold-primary); color: var(--gold-primary); }
+.btn-success { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
 
-/* Checkbox */
-.checkbox-group {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin: 24px 0;
-}
+/* SUCCESS */
+.success-screen { display: none; text-align: center; padding: 40px 20px; }
+.success-screen.active { display: block; }
+.success-icon { width: 80px; height: 80px; margin: 0 auto 24px; background: rgba(34,197,94,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.success-icon svg { width: 40px; height: 40px; color: #22c55e; }
+.success-screen h2 { font-family: var(--font-display); font-size: 36px; letter-spacing: 2px; color: var(--gold-primary); margin-bottom: 12px; }
+.success-screen p { color: var(--text-secondary); margin-bottom: 8px; font-size: 15px; }
+.success-actions { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
 
-.checkbox-group input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    margin-top: 2px;
-    accent-color: var(--gold-primary);
-}
-
-.checkbox-group label {
-    font-size: 14px;
-    color: var(--text-secondary);
-    cursor: pointer;
-}
-
-/* Buttons */
-.form-buttons {
-    display: flex;
-    gap: 16px;
-    margin-top: 32px;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 32px;
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: var(--transition-fast);
-}
-
-.btn-primary {
-    flex: 1;
-    background: var(--gradient-gold);
-    color: var(--storm-dark);
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px var(--gold-glow);
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: var(--text-secondary);
-}
-
-.btn-secondary:hover {
-    border-color: var(--gold-primary);
-    color: var(--gold-primary);
-}
-
-/* Footer */
-.footer {
-    background: var(--storm-darker);
-    padding: 60px 0 24px;
-    border-top: 1px solid rgba(255, 215, 0, 0.1);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 48px;
-}
-
-.footer-brand p {
-    color: var(--text-secondary);
-    font-size: 14px;
-    margin: 16px 0 24px;
-    max-width: 300px;
-}
-
+/* FOOTER */
+.footer { background: var(--storm-darker); padding: 60px 0 24px; border-top: 1px solid rgba(255,215,0,0.1); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand p { color: var(--text-secondary); font-size: 14px; margin: 16px 0 24px; max-width: 300px; }
 .footer-logo { display: flex; align-items: center; gap: 12px; }
 .footer-logo .logo-icon { width: 24px; height: 24px; }
-
 .social-links { display: flex; gap: 12px; }
-
-.social-links a {
-    width: 40px; height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 215, 0, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-    color: var(--text-secondary);
-    transition: var(--transition-fast);
-}
-
+.social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: rgba(255,215,0,0.1); border-radius: 8px; padding: 10px; color: var(--text-secondary); transition: var(--transition-fast); }
 .social-links a svg { width: 100%; height: 100%; }
-
-.social-links a:hover {
-    background: var(--gradient-gold);
-    transform: translateY(-3px);
-    color: var(--storm-dark);
-}
-
-.footer-links h4, .footer-contact-info h4 {
-    font-family: var(--font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--gold-primary);
-    margin-bottom: 20px;
-}
-
+.social-links a:hover { background: var(--gradient-gold); transform: translateY(-3px); color: var(--storm-dark); }
+.footer-links h4, .footer-contact-info h4 { font-family: var(--font-heading); font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-primary); margin-bottom: 20px; }
 .footer-links ul, .footer-contact-info ul { list-style: none; }
 .footer-links li, .footer-contact-info li { margin-bottom: 12px; }
 .footer-links a { font-size: 14px; color: var(--text-secondary); }
 .footer-links a:hover { color: var(--gold-primary); }
-
-.footer-contact-info li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 14px;
-    color: var(--text-secondary);
-}
-
-.contact-icon {
-    width: 18px; height: 18px;
-    flex-shrink: 0;
-    color: var(--gold-primary);
-}
-
+.footer-contact-info li { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-secondary); }
+.contact-icon { width: 18px; height: 18px; flex-shrink: 0; color: var(--gold-primary); }
 .contact-icon svg { width: 100%; height: 100%; }
-
-.footer-bottom {
-    padding-top: 24px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    text-align: center;
-}
-
+.footer-bottom { padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; }
 .footer-bottom p { font-size: 13px; color: var(--text-muted); }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     .mobile-toggle { display: flex; }
-
-    .nav-links {
-        position: fixed;
-        top: 0; right: -100%;
-        width: 80%;
-        max-width: 400px;
-        height: 100vh;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        padding: 100px 40px 40px;
-        background: var(--storm-darker);
-        border-left: 1px solid rgba(255, 215, 0, 0.1);
-        transition: var(--transition-medium);
-    }
-
+    .nav-links { position: fixed; top: 0; right: -100%; width: 80%; max-width: 400px; height: 100vh; flex-direction: column; align-items: flex-start; gap: 0; padding: 100px 40px 40px; background: var(--storm-darker); border-left: 1px solid rgba(255,215,0,0.1); transition: var(--transition-medium); }
     .nav-links.active { right: 0; }
     .nav-links li { width: 100%; }
-
-    .nav-links a {
-        display: block;
-        padding: 16px 0;
-        font-size: 18px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
+    .nav-links a { display: block; padding: 16px 0; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.05); }
     .nav-cta { margin-top: 24px; text-align: center; }
-
-    .progress-steps { flex-wrap: wrap; }
-    .step-label { display: none; }
-    .step-connector { width: 30px; }
-
-    .form-container { padding: 32px 24px; }
-    .form-row { grid-template-columns: 1fr; }
+    .form-container { padding: 28px 20px; }
+    .form-row, .form-row-3 { grid-template-columns: 1fr; }
+    .program-cards { grid-template-columns: 1fr; }
+    .review-grid { grid-template-columns: 1fr; }
     .payment-options { grid-template-columns: 1fr; }
+    .form-buttons { flex-direction: column; }
+    .btn-secondary { order: 2; }
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    .success-actions { flex-direction: column; align-items: center; }
+}
+@media (max-width: 480px) {
+    .step-label { display: none; }
+    .step-connector { width: 24px; }
 }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">EC HURRICANES</span>
-                    <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
-                </div>
-            </a>
-            <button class="mobile-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="calendar.html">Schedule</a></li>
-                <li><a href="staff.html">Staff</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="signup.html" class="nav-cta active">Join the Team</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Page Header -->
-    <header class="page-header">
-        <div class="storm-container">
-            <div class="lightning-flash"></div>
-            <div class="rain-container" id="rainContainer"></div>
-        </div>
-        <div class="page-header-content">
-            <h1>JOIN THE STORM</h1>
-            <p>Register your athlete for the upcoming season and become part of the Hurricane family.</p>
-        </div>
-    </header>
+<nav class="main-nav">
+    <div class="nav-container">
+        <a href="index.html" class="logo">
+            <div class="logo-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+            <div class="logo-text">
+                <span class="logo-main">EC HURRICANES</span>
+                <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
+            </div>
+        </a>
+        <button class="mobile-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="calendar.html">Schedule</a></li>
+            <li><a href="staff.html">Staff</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="signup.html" class="nav-cta active">Join the Team</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Registration Section -->
-    <section class="registration-section field-bg">
-        <div class="container">
-            <!-- Progress Steps -->
-            <div class="progress-steps">
-                <div class="step active" data-step="1">
-                    <div class="step-number">1</div>
-                    <span class="step-label">Player Info</span>
+<header class="page-header">
+    <div class="storm-container">
+        <div class="lightning-flash"></div>
+        <div class="rain-container" id="rainContainer"></div>
+    </div>
+    <div class="page-header-content">
+        <h1>JOIN THE STORM</h1>
+        <p>Complete your registration below. All AYF required forms are included.</p>
+    </div>
+</header>
+
+<section class="registration-section">
+    <div class="container">
+        <div class="progress-wrap">
+            <div class="progress-steps" id="progressSteps">
+                <div class="step active" data-step="1"><div class="step-number">1</div><span class="step-label">Player</span></div>
+                <div class="step-connector" id="conn1"></div>
+                <div class="step" data-step="2"><div class="step-number">2</div><span class="step-label">Guardian</span></div>
+                <div class="step-connector" id="conn2"></div>
+                <div class="step" data-step="3"><div class="step-number">3</div><span class="step-label">Medical</span></div>
+                <div class="step-connector" id="conn3"></div>
+                <div class="step" data-step="4"><div class="step-number">4</div><span class="step-label">Waivers</span></div>
+                <div class="step-connector" id="conn4"></div>
+                <div class="step" data-step="5"><div class="step-number">5</div><span class="step-label">Submit</span></div>
+            </div>
+        </div>
+
+        <!-- SUCCESS SCREEN -->
+        <div class="success-screen" id="successScreen">
+            <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h2>REGISTRATION SUBMITTED!</h2>
+            <p>Welcome to the Hurricane family. Your registration has been received.</p>
+            <p style="color:var(--text-muted);font-size:13px;">A coach will contact you within 48 hours. Please ensure payment is completed below.</p>
+            <div class="success-actions">
+                <a href="https://cash.app/$ECHurricanes" target="_blank" class="btn btn-primary">Pay via CashApp</a>
+                <a href="https://paypal.me/ECHurricanes" target="_blank" class="btn btn-secondary">Pay via PayPal</a>
+                <button onclick="window.print()" class="btn btn-secondary">Print / Save Record</button>
+            </div>
+        </div>
+
+        <div class="form-container" id="formContainer">
+            <form id="registrationForm">
+
+            <!-- ═══════════════ STEP 1: PLAYER ═══════════════ -->
+            <div class="form-step active" data-step="1">
+                <h2>PLAYER INFORMATION</h2>
+                <p class="step-desc">Tell us about the athlete you're registering (AYF Participation Contract — Player Info).</p>
+
+                <p class="form-section-title">Name & Identity</p>
+                <div class="form-row">
+                    <div class="form-group"><label>Last Name <span class="req">*</span></label><input type="text" name="playerLast" required></div>
+                    <div class="form-group"><label>First Name <span class="req">*</span></label><input type="text" name="playerFirst" required></div>
                 </div>
-                <div class="step-connector"></div>
-                <div class="step" data-step="2">
-                    <div class="step-number">2</div>
-                    <span class="step-label">Guardian</span>
+                <div class="form-row">
+                    <div class="form-group"><label>Initial</label><input type="text" name="playerInitial" maxlength="2"></div>
+                    <div class="form-group"><label>Preferred (Nick) Name</label><input type="text" name="playerNick"></div>
                 </div>
-                <div class="step-connector"></div>
-                <div class="step" data-step="3">
-                    <div class="step-number">3</div>
-                    <span class="step-label">Waiver & Pay</span>
+
+                <p class="form-section-title">Program Selection <span class="req">*</span></p>
+                <div class="program-cards">
+                    <label class="program-card-opt" id="opt-football">
+                        <input type="radio" name="program" value="Football" required>
+                        <h4>⚽ Football</h4>
+                        <p>Ages 5–12 · Boys & Girls · Multiple Divisions</p>
+                    </label>
+                    <label class="program-card-opt" id="opt-cheer">
+                        <input type="radio" name="program" value="Cheerleading">
+                        <h4>📣 Cheerleading</h4>
+                        <p>Ages 5–12 · All skill levels welcome</p>
+                    </label>
+                </div>
+                <div class="form-group" id="divisionGroup" style="margin-top:16px;display:none;">
+                    <label>Football Division</label>
+                    <select name="division">
+                        <option value="">Select division...</option>
+                        <option value="6U">6U (Ages 5–6)</option>
+                        <option value="8U">8U (Ages 7–8)</option>
+                        <option value="10U">10U (Ages 9–10)</option>
+                        <option value="12U">12U (Ages 11–12)</option>
+                    </select>
+                </div>
+
+                <p class="form-section-title">Age & School</p>
+                <div class="form-row">
+                    <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" name="dob" required></div>
+                    <div class="form-group"><label>Age as of 7/31 <span class="req">*</span></label><input type="number" name="ageAs731" min="4" max="15" placeholder="e.g. 9"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Grade in Fall <span class="req">*</span></label><input type="text" name="gradeInFall" placeholder="e.g. 4th" required></div>
+                    <div class="form-group"><label>School in Fall</label><input type="text" name="schoolInFall"></div>
+                </div>
+
+                <p class="form-section-title">Contact & Sizing</p>
+                <div class="form-row">
+                    <div class="form-group"><label>Jersey # (preferred)</label><input type="text" name="jerseyNum" placeholder="e.g. 24"></div>
+                    <div class="form-group"><label>Shirt/Jersey Size <span class="req">*</span></label>
+                        <select name="shirtSize" required>
+                            <option value="">Select size...</option>
+                            <option>Youth Small (YS)</option><option>Youth Medium (YM)</option><option>Youth Large (YL)</option><option>Youth XL (YXL)</option>
+                            <option>Adult Small (AS)</option><option>Adult Medium (AM)</option><option>Adult Large (AL)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group"><label>Home Email Address</label><input type="email" name="homeEmail"></div>
+                <div class="form-group"><label>Street Address <span class="req">*</span></label><input type="text" name="playerAddress" required></div>
+                <div class="form-row">
+                    <div class="form-group"><label>City <span class="req">*</span></label><input type="text" name="playerCity" required></div>
+                    <div class="form-group"><label>State</label><input type="text" name="playerState" value="NC"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Zip Code <span class="req">*</span></label><input type="text" name="playerZip" required></div>
+                    <div class="form-group"><label>Home Phone</label><input type="tel" name="homePhone"></div>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
                 </div>
             </div>
 
-            <!-- Form Container -->
-            <div class="form-container">
-                <form id="registrationForm">
-                    <!-- Step 1: Player Information -->
-                    <div class="form-step active" data-step="1">
-                        <h2>PLAYER INFORMATION</h2>
-                        <p>Tell us about the athlete you're registering.</p>
+            <!-- ═══════════════ STEP 2: GUARDIAN ═══════════════ -->
+            <div class="form-step" data-step="2">
+                <h2>PARENT / GUARDIAN</h2>
+                <p class="step-desc">Contact information for parent(s) and/or legal guardian (AYF Emergency Medical Form).</p>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="playerFirst">First Name</label>
-                                <input type="text" id="playerFirst" name="playerFirst" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="playerLast">Last Name</label>
-                                <input type="text" id="playerLast" name="playerLast" required>
-                            </div>
-                        </div>
+                <p class="form-section-title">Father / Parent 1</p>
+                <div class="form-group"><label>Full Name</label><input type="text" name="fatherName"></div>
+                <div class="form-group"><label>Street Address</label><input type="text" name="fatherAddress"></div>
+                <div class="form-row">
+                    <div class="form-group"><label>City</label><input type="text" name="fatherCity"></div>
+                    <div class="form-group"><label>State / Zip</label><input type="text" name="fatherStateZip"></div>
+                </div>
+                <div class="form-row-3">
+                    <div class="form-group"><label>Home Phone</label><input type="tel" name="fatherHome"></div>
+                    <div class="form-group"><label>Cell Phone</label><input type="tel" name="fatherCell"></div>
+                    <div class="form-group"><label>Work Phone</label><input type="tel" name="fatherWork"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Email</label><input type="email" name="fatherEmail"></div>
+                    <div class="form-group"><label>Employer</label><input type="text" name="fatherEmployer"></div>
+                </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" name="dob" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="gender">Gender</label>
-                                <select id="gender" name="gender" required>
-                                    <option value="">Select...</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                        </div>
+                <p class="form-section-title">Mother / Parent 2</p>
+                <div class="form-group"><label>Full Name</label><input type="text" name="motherName"></div>
+                <div class="form-group"><label>Street Address</label><input type="text" name="motherAddress"></div>
+                <div class="form-row">
+                    <div class="form-group"><label>City</label><input type="text" name="motherCity"></div>
+                    <div class="form-group"><label>State / Zip</label><input type="text" name="motherStateZip"></div>
+                </div>
+                <div class="form-row-3">
+                    <div class="form-group"><label>Home Phone</label><input type="tel" name="motherHome"></div>
+                    <div class="form-group"><label>Cell Phone</label><input type="tel" name="motherCell"></div>
+                    <div class="form-group"><label>Work Phone</label><input type="tel" name="motherWork"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" name="motherEmail" required></div>
+                    <div class="form-group"><label>Employer</label><input type="text" name="motherEmployer"></div>
+                </div>
 
-                        <div class="form-group">
-                            <label for="program">Program</label>
-                            <select id="program" name="program" required>
-                                <option value="">Select a program...</option>
-                                <option value="football-8u">Football - 8U Division</option>
-                                <option value="football-10-12u">Football - 10/12U Division</option>
-                                <option value="cheer">Cheerleading</option>
-                            </select>
-                        </div>
+                <p class="form-section-title">Additional Guardian (if applicable)</p>
+                <div class="form-group"><label>Guardian Name</label><input type="text" name="guardianName"></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Cell Phone</label><input type="tel" name="guardianCell"></div>
+                    <div class="form-group"><label>Email</label><input type="email" name="guardianEmail"></div>
+                </div>
 
-                        <div class="form-group">
-                            <label for="shirtSize">Shirt Size</label>
-                            <select id="shirtSize" name="shirtSize" required>
-                                <option value="">Select size...</option>
-                                <option value="YS">Youth Small</option>
-                                <option value="YM">Youth Medium</option>
-                                <option value="YL">Youth Large</option>
-                                <option value="YXL">Youth XL</option>
-                                <option value="AS">Adult Small</option>
-                                <option value="AM">Adult Medium</option>
-                            </select>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Parent/Guardian Information -->
-                    <div class="form-step" data-step="2">
-                        <h2>PARENT / GUARDIAN</h2>
-                        <p>We need contact information for the primary guardian.</p>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="guardianFirst">First Name</label>
-                                <input type="text" id="guardianFirst" name="guardianFirst" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="guardianLast">Last Name</label>
-                                <input type="text" id="guardianLast" name="guardianLast" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="address">Street Address</label>
-                            <input type="text" id="address" name="address" required>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" id="city" name="city" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="zip">ZIP Code</label>
-                                <input type="text" id="zip" name="zip" required>
-                            </div>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                            <button type="button" class="btn btn-primary" onclick="nextStep()">Continue</button>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Waiver & Payment -->
-                    <div class="form-step" data-step="3">
-                        <h2>WAIVER & PAYMENT</h2>
-                        <p>Review the waiver, sign, and complete payment to finish registration.</p>
-
-                        <div class="waiver-text">
-                            <h4>Liability Waiver & Release</h4>
-                            <p>I, the undersigned parent or legal guardian of the above-named minor, hereby give my consent for my child to participate in the EC Hurricanes Youth Football & Cheer program.</p>
-                            <p>I understand that participation involves physical activity that may result in injury. I assume all risks associated with my child's participation, including but not limited to falls, contact with other participants, and effects of weather conditions.</p>
-                            <p>I release and hold harmless EC Hurricanes, its coaches, volunteers, and affiliated organizations from any claims arising from my child's participation in the program.</p>
-                            <p>I certify that my child is physically fit and has no medical conditions that would prevent safe participation. I agree to notify coaches of any changes in my child's health status.</p>
-                        </div>
-
-                        <div class="signature-section">
-                            <h4>Parent/Guardian Signature</h4>
-                            <p>Please sign below to acknowledge you have read and agree to the waiver.</p>
-                            <div class="signature-pad-container">
-                                <canvas id="signaturePad"></canvas>
-                                <div class="signature-actions">
-                                    <button type="button" class="btn-clear" onclick="clearSignature()">Clear</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
-                            <label for="agreeTerms">I have read and agree to the liability waiver and release form above. I understand the risks involved and give consent for my child to participate.</label>
-                        </div>
-
-                        <h4 style="font-family: var(--font-heading); margin-top: 32px; margin-bottom: 16px;">Complete Payment</h4>
-                        <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">Registration fee: Contact us for current pricing. Click below to pay.</p>
-
-                        <div class="payment-options">
-                            <a href="https://cash.app/$YOURHANDLE" target="_blank" class="payment-option">
-                                <div class="payment-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                                    </svg>
-                                </div>
-                                <span>Pay with CashApp</span>
-                            </a>
-                            <a href="https://paypal.me/YOURHANDLE" target="_blank" class="payment-option">
-                                <div class="payment-icon">
-                                    <svg viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                                    </svg>
-                                </div>
-                                <span>Pay with PayPal</span>
-                            </a>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
-                            <button type="submit" class="btn btn-primary">Complete Registration</button>
-                        </div>
-                    </div>
-                </form>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <div class="logo-icon">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                            </svg>
-                        </div>
-                        <div class="logo-text">
-                            <span class="logo-main">EC HURRICANES</span>
-                            <span class="logo-sub">YOUTH FOOTBALL & CHEER</span>
-                        </div>
+            <!-- ═══════════════ STEP 3: MEDICAL ═══════════════ -->
+            <div class="form-step" data-step="3">
+                <h2>MEDICAL & INSURANCE</h2>
+                <p class="step-desc">This information will be kept confidential and used only in case of a medical emergency.</p>
+
+                <p class="form-section-title">Medical Insurance</p>
+                <div class="form-row">
+                    <div class="form-group"><label>Does player have insurance? <span class="req">*</span></label>
+                        <select name="hasInsurance" required>
+                            <option value="">Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
                     </div>
-                    <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5-14.</p>
-                    <div class="social-links">
-                        <a href="https://facebook.com/echurricanes" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="https://instagram.com/echurricanes" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                        <a href="https://tiktok.com/@echurricanes" aria-label="TikTok">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-                            </svg>
-                        </a>
+                    <div class="form-group"><label>Insurance Carrier</label><input type="text" name="insuranceCarrier"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Group</label><input type="text" name="insuranceGroup"></div>
+                    <div class="form-group"><label>Group #</label><input type="text" name="insuranceGroupNum"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Policy #</label><input type="text" name="policyNum"></div>
+                    <div class="form-group"><label>Policy Holder Name</label><input type="text" name="policyHolder"></div>
+                </div>
+
+                <p class="form-section-title">Family Physician</p>
+                <div class="form-group"><label>Physician Name</label><input type="text" name="physicianName"></div>
+                <div class="form-group"><label>Office Address</label><input type="text" name="physicianAddress"></div>
+                <div class="form-row">
+                    <div class="form-group"><label>City</label><input type="text" name="physicianCity"></div>
+                    <div class="form-group"><label>State / Zip</label><input type="text" name="physicianStateZip"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Phone</label><input type="tel" name="physicianPhone"></div>
+                    <div class="form-group"><label>Fax</label><input type="tel" name="physicianFax"></div>
+                </div>
+
+                <p class="form-section-title">Emergency Information</p>
+                <div class="form-group"><label>Preferred Hospital(s)</label><input type="text" name="prefHospital"></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Emergency Contact Name <span class="req">*</span></label><input type="text" name="emergencyName" required></div>
+                    <div class="form-group"><label>Emergency Contact Phone <span class="req">*</span></label><input type="tel" name="emergencyPhone" required></div>
+                </div>
+                <div class="form-group"><label>Relationship to Player</label><input type="text" name="emergencyRelation"></div>
+
+                <p class="form-section-title">Medical History</p>
+                <div class="form-group"><label>Allergies (list all; write "none" if none)</label><input type="text" name="allergies" placeholder="e.g. Penicillin, bee stings — or 'none'"></div>
+                <div class="form-group"><label>Medical Conditions (asthma, diabetes, etc.)</label><input type="text" name="medConditions" placeholder="List all relevant conditions, or 'none'"></div>
+                <div class="form-group"><label>Current Medications</label><textarea name="medications" placeholder="List all medications being taken, or 'none'"></textarea></div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Continue →</button>
+                </div>
+            </div>
+
+            <!-- ═══════════════ STEP 4: WAIVERS ═══════════════ -->
+            <div class="form-step" data-step="4">
+                <h2>WAIVERS & AGREEMENTS</h2>
+                <p class="step-desc">Please read each section carefully, initial where required, and sign at the bottom.</p>
+
+                <!-- PERMISSION TO PARTICIPATE -->
+                <p class="form-section-title">Permission to Participate & Liability Waiver</p>
+                <div class="waiver-box">
+                    <h4>AYF Amateur Athletic Waiver and Release of Liability — Minor</h4>
+                    <p>In consideration of Eastern Carolina Hurricanes Football & Cheer, my child/ward being allowed to participate in the American Youth Football program, I acknowledge and agree that:</p>
+                    <ol>
+                        <li>FOR MYSELF, SPOUSE, AND CHILD, I KNOWINGLY AND FREELY ASSUME ALL SUCH RISKS, both known and unknown, EVEN IF ARISING FROM THE NEGLIGENCE OF THE RELEASES or others, and assume full responsibility for my child's participation.</li>
+                        <li>I willingly agree to comply with the program's stated and customary terms and conditions for participation. If I observe any unusual significant concern in my child's readiness for participation, I will remove my child and bring such attention to the nearest official immediately.</li>
+                        <li>I, my spouse, my child, and on behalf of my/our heirs, assigns, personal representatives and next of kin, HEREBY RELEASE AND HOLD HARMLESS American Youth Football, Inc.; Eastern Carolina Hurricanes Football & Cheer; its directors, officers, officials, agents, employees, volunteers, other participants, sponsoring agencies, sponsors, advertisers, and owners/lessors of premises WITH RESPECT TO ANY AND ALL INJURY, ILLNESS, DISABILITY, DEATH, or loss or damage to person or property incident to my child's involvement or participation in these programs, WHETHER ARISING FROM THE NEGLIGENCE OF THE RELEASEES OR OTHERWISE, to the fullest extent permitted by law.</li>
+                        <li>I, for myself, my spouse, my child, and on behalf of my/our heirs, HEREBY INDEMNIFY AND HOLD HARMLESS all the above Releasees from any and all liabilities incident to my involvement or participation in these programs, EVEN IF ARISING FROM THEIR NEGLIGENCE.</li>
+                        <li>I assert that I have explained to my child/ward: the risks of the activity, responsibilities for adhering to the rules and regulations, and that my child/ward understands this agreement.</li>
+                    </ol>
+                    <p><strong>Scholastic Fitness:</strong> I am of the opinion that my son/daughter/ward is scholastically fit and would benefit by participation in this program. I agree to submit a copy of my son/daughter/ward's last completed grade report or written statement of scholastic fitness.</p>
+                </div>
+                <div class="initials-row">
+                    <label>Scholastic Fitness — Parent/Guardian Initial <span class="req">*</span></label>
+                    <input type="text" class="initials-input" name="initScholastic" maxlength="4" placeholder="Init." required>
+                </div>
+
+                <!-- HELMET WAIVER -->
+                <div class="form-group" id="helmetWaiverSection">
+                    <div class="waiver-box" style="margin-top:16px;">
+                        <h4>Helmet Waiver (Football Participants)</h4>
+                        <p>We acknowledge AND WE UNDERSTAND the risks involved in my CHILD/WARD playing FOOTBALL, which is a collision sport; the NOCSAE committee has adopted the following warning: DO NOT USE THIS HELMET TO BUTT, RAM OR SPEAR AN OPPOSING PLAYER. THIS IS IN VIOLATION OF FOOTBALL RULES AND CAN RESULT IN SEVERE HEAD, BRAIN OR NECK INJURY, PARALYSIS OR DEATH. THERE IS A RISK THAT THESE INJURIES MAY ALSO OCCUR AS A RESULT OF AN ACCIDENTAL CONTACT WITHOUT INTENT. NO HELMET CAN PREVENT ALL SUCH INJURIES.</p>
+                    </div>
+                    <div class="initials-row">
+                        <label>Parent/Guardian Initial <span class="req">*</span></label>
+                        <input type="text" class="initials-input" name="initHelmetParent" maxlength="4" placeholder="Init.">
+                    </div>
+                    <div class="initials-row">
+                        <label>Player Initial</label>
+                        <input type="text" class="initials-input" name="initHelmetPlayer" maxlength="4" placeholder="Init.">
                     </div>
                 </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
+
+                <!-- EQUIPMENT AGREEMENT -->
+                <p class="form-section-title">Equipment Use & Return Agreement</p>
+                <div class="waiver-box">
+                    <h4>Equipment Use and Return Agreement</h4>
+                    <p>By registering here, I, the undersigned parent(s) or legal guardian(s), hereby guarantee the safekeeping and timely return or reimbursement of the replacement value of any and all equipment issued to my child by E.C. Hurricanes Youth Football & Cheer. I will not modify or mark the equipment in any manner to make it unusable or undesirable for future participants.</p>
+                    <p>Equipment shall be returned as issued, excepting for normal wear and tear, clean and in good condition. Failure to return equipment by the posted return date will result in a MINIMUM fee of <strong>$350.00</strong> for replacement cost. Failure to return equipment or reimburse ECHYFC will preclude the player from participating in any future ECHYFC activities. If ECHYFC cannot recover the minimum of $350.00, legal actions may be taken and the matter may be forwarded to a collection agency.</p>
+                </div>
+                <div class="initials-row">
+                    <label>Equipment Uniform Responsibility — Parent/Guardian Initial <span class="req">*</span></label>
+                    <input type="text" class="initials-input" name="initEquipment" maxlength="4" placeholder="Init." required>
+                </div>
+
+                <!-- CODE OF CONDUCT -->
+                <p class="form-section-title">Code of Conduct</p>
+                <div class="waiver-box">
+                    <h4>Code of Conduct — Fans, Parents & Players</h4>
+                    <p>The Ideology of Youth Sports Including This Program Is To Promote Good Understanding And Fundamental Knowledge Of The Sport. It Is Critical That Good Sportsmanship Is Maintained Both On And Off The Field.</p>
+                    <p><strong>Fans shall:</strong> Not criticize players/coaches in front of spectators; Accept officials' decisions as fair; Not criticize opposing teams; Refrain from using abusive or profane language at any time; Not be under the influence of alcohol or illegal substances; Not interfere with coaching staff before, during, or after games.</p>
+                    <p><strong>Athletes Code:</strong> I will emphasize sportsmanship, ethical conduct and fair play. I will not use profanity or "talk trash" before, during or after any game. I will not use drugs, alcohol, or tobacco.</p>
+                    <p><strong>Parent's Code:</strong> I will support my child's team and teach the value of commitment. I will not criticize officials or direct abuse toward them. I will not intrude onto the field or yell from the bleachers at coaches, referees or administration.</p>
+                    <p>ANY VIOLATION of the Code of Conduct risks the future participation of the child in the program for up to three years.</p>
+                </div>
+                <div class="initials-row">
+                    <label>Code of Conduct — Parent/Guardian Initial <span class="req">*</span></label>
+                    <input type="text" class="initials-input" name="initConduct" maxlength="4" placeholder="Init." required>
+                </div>
+
+                <!-- CONCUSSION -->
+                <p class="form-section-title">Concussion / MTBI Acknowledgement</p>
+                <div class="waiver-box">
+                    <h4>Mild Traumatic Brain Injury (MTBI) / Concussion Annual Statement</h4>
+                    <p>I acknowledge that:</p>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="calendar.html">Schedule</a></li>
-                        <li><a href="staff.html">Staff</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="signup.html">Register</a></li>
+                        <li>My organization has provided educational materials including the CDC Concussion fact sheet on what a concussion is.</li>
+                        <li>I have fully disclosed to the staff any prior medical conditions and will also disclose any future conditions.</li>
+                        <li>A concussion is a brain injury, which I am responsible for reporting to the team physician, athletic trainer, coach, parent volunteer, or official.</li>
+                        <li>I will not return to play in a game or practice if I have received a blow to the head or body that results in concussion related symptoms.</li>
+                        <li>I will not return to play until my symptoms have resolved AND I have written clearance from a qualified health care professional.</li>
+                        <li>Following concussion, the brain needs time to heal and I am much more likely to have a repeat concussion if I return to play before my symptoms resolve.</li>
                     </ul>
                 </div>
-                <div class="footer-contact-info">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>
-                            <span class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                            </span>
-                            <span>506 NC-306, Grantsboro, NC 28529</span>
-                        </li>
-                        <li>
-                            <span class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </span>
-                            <span>(252) 670-6707</span>
-                        </li>
-                        <li>
-                            <span class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                    <polyline points="22,6 12,13 2,6"/>
-                                </svg>
-                            </span>
-                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fe9b9d87918b8a969891918a9c9f92929d969b9b8cbe99939f9792d09d9193">[email&#160;protected]</a></span>
-                        </li>
-                    </ul>
+
+                <!-- IMAGE RELEASE -->
+                <p class="form-section-title">Image Release — Minor</p>
+                <div class="waiver-box">
+                    <h4>AYF Image Release</h4>
+                    <p>In consideration of my minor child/ward being allowed to participate in any way in the American Youth Football, Inc. ("AYF") programs and events, the undersigned agrees that American Youth Football Inc., is hereby granted the unrestricted right and permission, free from approval or review, to copyright and/or use my child's/ward's likeness in all media now or hereafter known, including but not limited to, pictures and videos of my child which he/she may be included intact or in part for promotion or other commercial use.</p>
+                </div>
+
+                <!-- COMBINED SIGNATURE SECTION -->
+                <p class="form-section-title">Parent/Guardian Signature</p>
+                <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">By signing below, you acknowledge you have read and agree to all of the above: the Liability Waiver & Release, Equipment Agreement, Code of Conduct, Concussion Acknowledgement, and Image Release. You certify that all information provided is accurate.</p>
+
+                <div class="sig-section">
+                    <h4>Parent/Guardian Signature <span class="req">*</span></h4>
+                    <p>Sign in the box below using your mouse or finger.</p>
+                    <div class="sig-pad-wrap">
+                        <canvas class="sig-canvas" id="sigParent"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sigParent')">Clear</button></div>
+                    </div>
+                </div>
+
+                <div class="sig-section">
+                    <h4>Player Signature (if age 8+)</h4>
+                    <p>Player signs to acknowledge understanding of the rules and code of conduct.</p>
+                    <div class="sig-pad-wrap">
+                        <canvas class="sig-canvas" id="sigPlayer"></canvas>
+                        <div class="sig-actions"><button type="button" class="btn-clear" onclick="clearSig('sigPlayer')">Clear</button></div>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeAll" name="agreeAll" required>
+                    <label for="agreeAll">I have read, understand, and agree to all waivers, agreements, and policies above. I confirm that all information provided is true and accurate to the best of my knowledge.</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeImage" name="agreeImage" required>
+                    <label for="agreeImage">I consent to the Image Release for my minor child as described above.</label>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                    <button type="button" class="btn btn-primary" onclick="nextStep()">Review & Submit →</button>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 EC Hurricanes Youth Football & Cheer. All rights reserved.</p>
+
+            <!-- ═══════════════ STEP 5: REVIEW & SUBMIT ═══════════════ -->
+            <div class="form-step" data-step="5">
+                <h2>REVIEW & SUBMIT</h2>
+                <p class="step-desc">Please review your information below before submitting.</p>
+
+                <div class="review-grid" id="reviewGrid">
+                    <!-- Populated by JS -->
+                </div>
+
+                <div style="background:rgba(255,215,0,0.06);border:1px solid rgba(255,215,0,0.2);border-radius:12px;padding:20px;margin-bottom:24px;">
+                    <p style="font-family:var(--font-heading);font-size:14px;font-weight:600;color:var(--gold-primary);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px;">Registration Fee</p>
+                    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;">Please contact us at <strong style="color:white">(252) 670-6707</strong> for current registration pricing.</p>
+                    <p style="font-size:13px;color:var(--text-muted);">Payment can be made via CashApp or PayPal after submission. All documents must be completed and fees paid prior to receiving equipment or playing.</p>
+                </div>
+
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="prevStep()">← Back</button>
+                    <button type="submit" class="btn btn-primary">✓ Submit Registration</button>
+                </div>
+            </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="logo-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                    <div class="logo-text"><span class="logo-main">EC HURRICANES</span><span class="logo-sub">YOUTH FOOTBALL & CHEER</span></div>
+                </div>
+                <p>Building champions on and off the field. Serving Eastern North Carolina youth ages 5–14.</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/echurricanes" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                    <a href="https://instagram.com/echurricanes" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="calendar.html">Schedule</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="signup.html">Register</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact-info">
+                <h4>Contact</h4>
+                <ul>
+                    <li><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span>506 NC-306, Grantsboro, NC 28529</span></li>
+                    <li><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><span>(252) 670-6707</span></li>
+                    <li><span class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span><span>ecyouthfootballcheer@gmail.com</span></li>
+                </ul>
             </div>
         </div>
-    </footer>
+        <div class="footer-bottom"><p>&copy; 2025 EC Hurricanes Youth Football & Cheer. All rights reserved.</p></div>
+    </div>
+</footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Rain Effect
-    function createRainDrop() {
-        const container = document.getElementById('rainContainer');
-        if (!container) return;
-        
-        const drop = document.createElement('div');
-        drop.className = 'rain-drop';
-        
-        const left = Math.random() * 100;
-        const height = 10 + Math.random() * 20;
-        const width = 1 + Math.random() * 1;
-        const duration = 0.5 + Math.random() * 0.5;
-        const delay = Math.random() * 2;
-        const opacity = 0.3 + Math.random() * 0.4;
-        
-        drop.style.cssText = `
-            left: ${left}%;
-            height: ${height}px;
-            width: ${width}px;
-            animation-duration: ${duration}s;
-            animation-delay: ${delay}s;
-            opacity: ${opacity};
-        `;
-        
-        container.appendChild(drop);
-        
-        setTimeout(() => {
-            drop.remove();
-            createRainDrop();
-        }, (duration + delay) * 1000);
+<script>
+// ── RAIN ──
+function createRainDrop() {
+    const c = document.getElementById('rainContainer');
+    if (!c) return;
+    const d = document.createElement('div');
+    d.className = 'rain-drop';
+    const dur = 0.5 + Math.random() * 0.5;
+    const delay = Math.random() * 2;
+    d.style.cssText = `left:${Math.random()*100}%;height:${10+Math.random()*20}px;width:${1+Math.random()}px;animation-duration:${dur}s;animation-delay:${delay}s;opacity:${0.3+Math.random()*0.4};`;
+    c.appendChild(d);
+    setTimeout(() => { d.remove(); createRainDrop(); }, (dur+delay)*1000);
+}
+for (let i=0;i<80;i++) setTimeout(createRainDrop, i*60);
+
+// ── LIGHTNING ──
+function triggerLightning() {
+    const f = document.querySelector('.lightning-flash');
+    if (!f) return;
+    if (Math.random() > 0.2) {
+        f.classList.add('flash');
+        setTimeout(() => f.classList.remove('flash'), 150);
     }
+    setTimeout(triggerLightning, 2000 + Math.random() * 3000);
+}
+setTimeout(triggerLightning, 2000);
 
-    for (let i = 0; i < 100; i++) {
-        setTimeout(createRainDrop, i * 50);
-    }
+// ── MOBILE MENU ──
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navLinks = document.querySelector('.nav-links');
+mobileToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
 
-    // Lightning Effect
-    function triggerLightning() {
-        const flash = document.querySelector('.lightning-flash');
-        if (!flash) return;
-        
-        if (Math.random() > 0.2) {
-            flash.classList.add('flash');
-            setTimeout(() => flash.classList.remove('flash'), 150);
-            
-            if (Math.random() > 0.6) {
-                setTimeout(() => {
-                    flash.classList.add('flash');
-                    setTimeout(() => flash.classList.remove('flash'), 150);
-                }, 100);
-            }
-        }
-        
-        setTimeout(triggerLightning, 2000 + Math.random() * 3000);
-    }
-
-    setTimeout(triggerLightning, 2000);
-
-    // Mobile Menu
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
+// ── PROGRAM SELECTOR ──
+document.querySelectorAll('.program-card-opt').forEach(card => {
+    card.addEventListener('click', () => {
+        document.querySelectorAll('.program-card-opt').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        const val = card.querySelector('input').value;
+        document.getElementById('divisionGroup').style.display = val === 'Football' ? 'block' : 'none';
+        document.getElementById('helmetWaiverSection').style.display = val === 'Football' ? 'block' : 'none';
     });
+});
+// init
+document.getElementById('helmetWaiverSection').style.display = 'none';
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileToggle.classList.remove('active');
-        });
+// ── STEP NAVIGATION ──
+let currentStep = 1;
+const totalSteps = 5;
+
+function updateProgress() {
+    document.querySelectorAll('.step').forEach(s => {
+        const n = parseInt(s.dataset.step);
+        s.classList.remove('active','completed');
+        if (n === currentStep) s.classList.add('active');
+        else if (n < currentStep) s.classList.add('completed');
     });
-
-    // Multi-step Form
-    let currentStep = 1;
-    const totalSteps = 3;
-
-    function updateProgress() {
-        document.querySelectorAll('.step').forEach((step, index) => {
-            const stepNum = index + 1;
-            step.classList.remove('active', 'completed');
-            if (stepNum === currentStep) {
-                step.classList.add('active');
-            } else if (stepNum < currentStep) {
-                step.classList.add('completed');
-            }
-        });
-
-        document.querySelectorAll('.step-connector').forEach((connector, index) => {
-            if (index + 1 < currentStep) {
-                connector.classList.add('completed');
-            } else {
-                connector.classList.remove('completed');
-            }
-        });
-
-        document.querySelectorAll('.form-step').forEach(step => {
-            step.classList.remove('active');
-            if (parseInt(step.dataset.step) === currentStep) {
-                step.classList.add('active');
-            }
-        });
+    for (let i = 1; i <= 4; i++) {
+        const conn = document.getElementById('conn'+i);
+        if (conn) conn.classList.toggle('completed', i < currentStep);
     }
+    document.querySelectorAll('.form-step').forEach(s => {
+        s.classList.toggle('active', parseInt(s.dataset.step) === currentStep);
+    });
+}
 
-    function nextStep() {
-        if (currentStep < totalSteps) {
-            currentStep++;
-            updateProgress();
-            window.scrollTo({ top: 300, behavior: 'smooth' });
+function nextStep() {
+    if (!validateStep(currentStep)) return;
+    if (currentStep < totalSteps) {
+        currentStep++;
+        if (currentStep === 5) buildReview();
+        updateProgress();
+        document.getElementById('formContainer').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+}
+
+function prevStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        updateProgress();
+        document.getElementById('formContainer').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+}
+
+function validateStep(step) {
+    const formStep = document.querySelector(`.form-step[data-step="${step}"]`);
+    const required = formStep.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(el => {
+        el.style.borderColor = '';
+        if (!el.value.trim()) {
+            el.style.borderColor = '#ef4444';
+            if (valid) el.focus();
+            valid = false;
         }
-    }
+    });
+    if (!valid) { alert('Please fill in all required fields (marked with *) before continuing.'); }
+    return valid;
+}
 
-    function prevStep() {
-        if (currentStep > 1) {
-            currentStep--;
-            updateProgress();
-            window.scrollTo({ top: 300, behavior: 'smooth' });
-        }
-    }
+// ── REVIEW BUILD ──
+function buildReview() {
+    const form = document.getElementById('registrationForm');
+    const data = {};
+    new FormData(form).forEach((v,k) => data[k] = v);
 
-    // Signature Pad
-    const canvas = document.getElementById('signaturePad');
+    const grid = document.getElementById('reviewGrid');
+    grid.innerHTML = `
+        <div class="review-card">
+            <h4>Player</h4>
+            <div class="review-row"><span class="lbl">Name</span><span class="val">${data.playerFirst||''} ${data.playerLast||''}</span></div>
+            <div class="review-row"><span class="lbl">DOB</span><span class="val">${data.dob||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Age (7/31)</span><span class="val">${data.ageAs731||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Grade</span><span class="val">${data.gradeInFall||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Program</span><span class="val">${data.program||'—'} ${data.division?'/ '+data.division:''}</span></div>
+            <div class="review-row"><span class="lbl">Jersey #</span><span class="val">${data.jerseyNum||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Shirt Size</span><span class="val">${data.shirtSize||'—'}</span></div>
+        </div>
+        <div class="review-card">
+            <h4>Contact</h4>
+            <div class="review-row"><span class="lbl">Address</span><span class="val">${data.playerAddress||'—'}</span></div>
+            <div class="review-row"><span class="lbl">City/Zip</span><span class="val">${data.playerCity||''} ${data.playerZip||''}</span></div>
+            <div class="review-row"><span class="lbl">Home Phone</span><span class="val">${data.homePhone||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Email</span><span class="val">${data.homeEmail||data.motherEmail||'—'}</span></div>
+        </div>
+        <div class="review-card">
+            <h4>Parent / Guardian</h4>
+            <div class="review-row"><span class="lbl">Father</span><span class="val">${data.fatherName||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Cell</span><span class="val">${data.fatherCell||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Mother</span><span class="val">${data.motherName||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Cell</span><span class="val">${data.motherCell||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Email</span><span class="val">${data.motherEmail||'—'}</span></div>
+        </div>
+        <div class="review-card">
+            <h4>Medical</h4>
+            <div class="review-row"><span class="lbl">Insurance</span><span class="val">${data.hasInsurance||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Carrier</span><span class="val">${data.insuranceCarrier||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Physician</span><span class="val">${data.physicianName||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Emergency</span><span class="val">${data.emergencyName||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Emerg. Phone</span><span class="val">${data.emergencyPhone||'—'}</span></div>
+            <div class="review-row"><span class="lbl">Allergies</span><span class="val">${data.allergies||'—'}</span></div>
+        </div>
+    `;
+}
+
+// ── SIGNATURE PADS ──
+const sigPads = {};
+
+function initSigPad(id) {
+    const canvas = document.getElementById(id);
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let isDrawing = false;
+    let drawing = false;
 
-    function resizeCanvas() {
+    function resize() {
         const rect = canvas.parentElement.getBoundingClientRect();
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         canvas.width = rect.width;
-        canvas.height = 150;
+        canvas.height = 130;
+        ctx.putImageData(imgData, 0, 0);
         ctx.strokeStyle = '#ffd700';
         ctx.lineWidth = 2;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
     }
+    resize();
+    window.addEventListener('resize', resize);
 
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    function pos(e) {
+        const r = canvas.getBoundingClientRect();
+        const src = e.touches ? e.touches[0] : e;
+        return { x: src.clientX - r.left, y: src.clientY - r.top };
+    }
 
-    function getPosition(e) {
-        const rect = canvas.getBoundingClientRect();
-        if (e.touches) {
-            return {
-                x: e.touches[0].clientX - rect.left,
-                y: e.touches[0].clientY - rect.top
-            };
+    canvas.addEventListener('mousedown', e => { drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+    canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mouseleave', () => drawing = false);
+    canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = pos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, {passive:false});
+    canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = pos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); }, {passive:false});
+    canvas.addEventListener('touchend', () => drawing = false);
+
+    sigPads[id] = canvas;
+}
+
+function clearSig(id) {
+    const c = sigPads[id];
+    if (c) c.getContext('2d').clearRect(0, 0, c.width, c.height);
+}
+
+function isSigEmpty(id) {
+    const c = sigPads[id];
+    if (!c) return true;
+    const data = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+    return !data.some(v => v !== 0);
+}
+
+// Init pads after DOM ready
+window.addEventListener('load', () => {
+    initSigPad('sigParent');
+    initSigPad('sigPlayer');
+});
+
+// ── FORM SUBMIT ──
+document.getElementById('registrationForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Validate sig
+    if (isSigEmpty('sigParent')) {
+        alert('Please provide the parent/guardian signature before submitting.');
+        return;
+    }
+    if (!document.getElementById('agreeAll').checked || !document.getElementById('agreeImage').checked) {
+        alert('Please check both acknowledgement checkboxes before submitting.');
+        return;
+    }
+
+    const form = this;
+    const data = {};
+    new FormData(form).forEach((v,k) => data[k] = v);
+    data.id = Date.now();
+    data.submittedAt = new Date().toISOString();
+    data.sigParent = sigPads['sigParent'] ? sigPads['sigParent'].toDataURL() : '';
+    data.sigPlayer = sigPads['sigPlayer'] ? sigPads['sigPlayer'].toDataURL() : '';
+
+    // Map form fields to Supabase column names
+    const payload = {
+        player_first: data.playerFirst, player_last: data.playerLast,
+        player_nick: data.playerNick, player_initial: data.playerInitial,
+        dob: data.dob || null, age_as_731: data.ageAs731 ? parseInt(data.ageAs731) : null,
+        program: data.program, division: data.division,
+        grade_in_fall: data.gradeInFall, school_in_fall: data.schoolInFall,
+        jersey_num: data.jerseyNum, shirt_size: data.shirtSize,
+        home_email: data.homeEmail, player_address: data.playerAddress,
+        player_city: data.playerCity, player_state: data.playerState, player_zip: data.playerZip,
+        home_phone: data.homePhone,
+        father_name: data.fatherName, father_cell: data.fatherCell, father_email: data.fatherEmail,
+        father_work: data.fatherWork, father_employer: data.fatherEmployer,
+        mother_name: data.motherName, mother_cell: data.motherCell, mother_email: data.motherEmail,
+        mother_work: data.motherWork, mother_employer: data.motherEmployer,
+        guardian_name: data.guardianName, guardian_cell: data.guardianCell, guardian_email: data.guardianEmail,
+        has_insurance: data.hasInsurance, insurance_carrier: data.insuranceCarrier,
+        insurance_group: data.insuranceGroup, insurance_group_num: data.insuranceGroupNum,
+        policy_num: data.policyNum, policy_holder: data.policyHolder,
+        physician_name: data.physicianName, physician_phone: data.physicianPhone,
+        physician_address: data.physicianAddress, physician_city: data.physicianCity,
+        pref_hospital: data.prefHospital,
+        emergency_name: data.emergencyName, emergency_phone: data.emergencyPhone, emergency_relation: data.emergencyRelation,
+        allergies: data.allergies, med_conditions: data.medConditions, medications: data.medications,
+        init_scholastic: data.initScholastic, init_helmet_parent: data.initHelmetParent,
+        init_helmet_player: data.initHelmetPlayer, init_equipment: data.initEquipment, init_conduct: data.initConduct,
+        agree_all: !!data.agreeAll, agree_image: !!data.agreeImage,
+        sig_parent: data.sigParent, sig_player: data.sigPlayer,
+        status: 'new'
+    };
+
+    // Submit to Supabase
+    try {
+        const res = await fetch('https://aeuhufgbmoydxrnryspm.supabase.co/rest/v1/ec_registrations', {
+            method: 'POST',
+            headers: {
+                'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldWh1ZmdibW95ZHhybnJ5c3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDcwNDUsImV4cCI6MjA4Njc4MzA0NX0.gPrLwTjaeBB-b82iSbNI1G023IOPX2std3fmkfsXb3A',
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldWh1ZmdibW95ZHhybnJ5c3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDcwNDUsImV4cCI6MjA4Njc4MzA0NX0.gPrLwTjaeBB-b82iSbNI1G023IOPX2std3fmkfsXb3A',
+                'Content-Type': 'application/json',
+                'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(payload)
+        });
+        if (!res.ok) {
+            const errText = await res.text();
+            throw new Error(errText);
         }
-        return {
-            x: e.clientX - rect.left,
-            y: e.clientY - rect.top
-        };
+    } catch(err) {
+        console.error('Supabase submit error:', err);
+        alert('There was an error submitting your registration. Please contact us directly at (252) 670-6707.');
+        return;
     }
 
-    canvas.addEventListener('mousedown', (e) => {
-        isDrawing = true;
-        const pos = getPosition(e);
-        ctx.beginPath();
-        ctx.moveTo(pos.x, pos.y);
-    });
-
-    canvas.addEventListener('mousemove', (e) => {
-        if (!isDrawing) return;
-        const pos = getPosition(e);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
-    });
-
-    canvas.addEventListener('mouseup', () => isDrawing = false);
-    canvas.addEventListener('mouseout', () => isDrawing = false);
-
-    canvas.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        isDrawing = true;
-        const pos = getPosition(e);
-        ctx.beginPath();
-        ctx.moveTo(pos.x, pos.y);
-    });
-
-    canvas.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-        if (!isDrawing) return;
-        const pos = getPosition(e);
-        ctx.lineTo(pos.x, pos.y);
-        ctx.stroke();
-    });
-
-    canvas.addEventListener('touchend', () => isDrawing = false);
-
-    function clearSignature() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    // Form Submission
-    document.getElementById('registra
+    // Show success
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('progressSteps').closest('.progress-wrap').style.display = 'none';
+    const ss = document.getElementById('successScreen');
+    ss.classList.add('active');
+    ss.scrollIntoView({behavior:'smooth'});
+});
+</script>
+</body>
+</html>

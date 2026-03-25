@@ -336,9 +336,12 @@ a {
     background: rgba(5, 5, 5, 0.9);
     border: 1px solid rgba(255, 215, 0, 0.15);
     border-radius: 16px;
-    padding: 40px;
     text-align: center;
     transition: var(--transition-medium);
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .staff-card:hover {
@@ -348,22 +351,34 @@ a {
 }
 
 .staff-photo {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 24px;
-    background: var(--storm-mid);
-    border-radius: 50%;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--storm-mid), var(--cloud-gray));
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid var(--gold-primary);
     overflow: hidden;
+    flex-shrink: 0;
+    border-bottom: 2px solid rgba(255, 215, 0, 0.15);
+}
+
+.staff-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
 }
 
 .staff-photo svg {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     color: var(--text-muted);
+    opacity: 0.45;
+}
+
+.staff-card-body {
+    padding: 24px 28px 28px;
+    flex: 1;
 }
 
 .staff-card h3 {
@@ -724,87 +739,9 @@ a {
                 <h2 class="section-title">COACHING STAFF & BOARD OF DIRECTORS</h2>
             </div>
             
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <div class="staff-photo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <h3>Zac Thomas</h3>
-                    <p class="staff-role">President / 10-12U Head Coach</p>
-                    <p>Leading our organization with passion and dedication to youth development through football.</p>
-                    <div class="staff-certifications">
-                        <span>AYFCA Certified</span>
-                        <span>USA Football</span>
-                    </div>
-                </div>
-                
-                <div class="staff-card">
-                    <div class="staff-photo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <h3>Brandon Talbert</h3>
-                    <p class="staff-role">Marketing Director / 8U Head Coach</p>
-                    <p>Dedicated to growing our program and coaching the next generation of Hurricane athletes.</p>
-                    <div class="staff-certifications">
-                        <span>AYFCA Certified</span>
-                        <span>USA Football</span>
-                    </div>
-                </div>
-                
-                <div class="staff-card">
-                    <div class="staff-photo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <h3>Jeff Robinson</h3>
-                    <p class="staff-role">Fundraising Coordinator / 10U Assistant Coach</p>
-                    <p>Supporting our organization's growth through fundraising efforts while developing young athletes on the field.</p>
-                    <div class="staff-certifications">
-                        <span>AYFCA Certified</span>
-                        <span>USA Football</span>
-                    </div>
-                </div>
-                
-                <div class="staff-card">
-                    <div class="staff-photo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <h3>Desheun Smith</h3>
-                    <p class="staff-role">10U Assistant Coach</p>
-                    <p>Bringing energy and expertise to help develop the next generation of Hurricane football players.</p>
-                    <div class="staff-certifications">
-                        <span>AYFCA Certified</span>
-                        <span>USA Football</span>
-                    </div>
-                </div>
-                
-                <div class="staff-card">
-                    <div class="staff-photo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                    </div>
-                    <h3>Cheer Coach</h3>
-                    <p class="staff-role">Head Cheer Coach</p>
-                    <p>Bringing energy and expertise to develop confident, skilled cheerleaders.</p>
-                    <div class="staff-certifications">
-                        <span>AACCA Certified</span>
-                        <span>USASF</span>
-                    </div>
-                </div>
-            </div>
+            <div class="staff-grid" id="staffGrid">
+                <!-- Populated by JavaScript from admin panel data -->
+            </div>            </div>
         </div>
     </section>
 
@@ -964,6 +901,44 @@ a {
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+    const SB_URL = 'https://aeuhufgbmoydxrnryspm.supabase.co';
+    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldWh1ZmdibW95ZHhybnJ5c3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDcwNDUsImV4cCI6MjA4Njc4MzA0NX0.gPrLwTjaeBB-b82iSbNI1G023IOPX2std3fmkfsXb3A';
+
+    async function sbGet(table, query='') {
+        const r = await fetch(SB_URL + '/rest/v1/' + table + (query ? '?' + query : ''), {
+            headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+        });
+        return r.ok ? r.json() : [];
+    }
+
+    async function renderStaff() {
+        const grid = document.getElementById('staffGrid');
+        if (!grid) return;
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Loading...</div>';
+        const staff = await sbGet('ec_staff', 'order=sort_order.asc');
+        if (!staff.length) { grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">No staff listed.</div>'; return; }
+        grid.innerHTML = staff.map(s => {
+            const photoHtml = s.photo_url
+                ? `<img src="${s.photo_url}" alt="${s.name}">`
+                : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
+            const certs = (s.certifications||'').split(',').map(c => c.trim()).filter(Boolean);
+            return `
+                <div class="staff-card">
+                    <div class="staff-photo">${photoHtml}</div>
+                    <div class="staff-card-body">
+                        <h3>${s.name}</h3>
+                        <p class="staff-role">${s.role}</p>
+                        <p>${s.bio||''}</p>
+                        ${certs.length ? `<div class="staff-certifications">${certs.map(c=>`<span>${c}</span>`).join('')}</div>` : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    renderStaff();
+
     // Rain Effect
     function createRainDrop() {
         const container = document.getElementById('rainContainer');
