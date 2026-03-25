@@ -428,7 +428,52 @@ a {
 
 .calendar-day.has-event {
     border: 1px solid var(--gold-primary);
+    cursor: pointer;
 }
+.calendar-day.has-event:hover {
+    background: rgba(255, 215, 0, 0.12);
+}
+.event-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.event-popup.open { display: flex; }
+.event-popup-card {
+    background: #111;
+    border: 1px solid rgba(255,215,0,0.25);
+    border-radius: 14px;
+    padding: 28px 32px;
+    width: 100%;
+    max-width: 440px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.event-popup-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--gold-primary);
+    margin-bottom: 16px;
+}
+.popup-event-item { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.popup-event-item:last-child { border-bottom: none; }
+.popup-ev-title { font-family: var(--font-heading); font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+.popup-ev-meta { font-size: 13px; color: var(--text-muted); display: flex; flex-wrap: wrap; gap: 8px; }
+.popup-ev-meta span { display: flex; align-items: center; gap: 4px; }
+.popup-ev-meta svg { width: 13px; height: 13px; flex-shrink: 0; }
+.popup-close { margin-top: 20px; width: 100%; padding: 11px; background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); border-radius: 8px; color: var(--gold-primary); font-family: var(--font-heading); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; }
+.popup-close:hover { background: rgba(255,215,0,0.18); }
+.type-pill { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+.pill-game     { background: rgba(239,68,68,0.2);  color: #f87171; }
+.pill-practice { background: rgba(59,130,246,0.2); color: #60a5fa; }
+.pill-event    { background: rgba(34,197,94,0.2);  color: #4ade80; }
+.pill-other    { background: rgba(168,85,247,0.2); color: #c084fc; }
 
 /* ================================================
    EVENTS TIMELINE
@@ -938,76 +983,14 @@ a {
                 <h2 class="section-title">SEASON EVENTS</h2>
             </div>
             
-            <div class="events-timeline">
-                <div class="timeline-item">
+            <div class="events-timeline" id="eventsTimeline">
+                <!-- Supabase events prepended above by JS. Season Opener is the only static placeholder. -->
+                <div class="timeline-item" id="staticSeasonOpener">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-date">
                             <span class="month">TBA</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4>Registration Opens</h4>
-                            <p>Online registration begins for the upcoming season. Early bird pricing available!</p>
-                            <span class="timeline-location">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"/>
-                                    <polyline points="12 6 12 12 16 14"/>
-                                </svg>
-                                Online
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">
-                            <span class="month">TBA</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4>Equipment Distribution</h4>
-                            <p>Pick up uniforms and equipment for all registered players.</p>
-                            <span class="timeline-location">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                506 NC-306, Grantsboro
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">
-                            <span class="month">TBA</span>
-                            <span class="year">2025</span>
-                        </div>
-                        <div class="timeline-info">
-                            <h4>First Practice</h4>
-                            <p>Season kickoff! All divisions begin practice. Don't forget water and proper gear.</p>
-                            <span class="timeline-location">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                    <circle cx="12" cy="10" r="3"/>
-                                </svg>
-                                506 NC-306, Grantsboro
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date">
-                            <span class="month">TBA</span>
-                            <span class="year">2025</span>
+                            <span class="year">2026</span>
                         </div>
                         <div class="timeline-info">
                             <h4>Season Opener</h4>
@@ -1351,63 +1334,100 @@ a {
     }
     
     // Load events from Supabase and render in timeline
+    // Store all events globally for calendar click popup
+    let _allEvents = [];
+
     async function loadSupabaseEvents() {
         const today = new Date().toISOString().slice(0, 10);
-        const events = await sbGet('ec_events', 'date=gte.' + today + '&order=date.asc');
-        if (!events.length) return;
-        const timeline = document.querySelector('.events-timeline');
-        if (!timeline) return;
-        const tc = {game:'#ef4444',practice:'#3b82f6',event:'#22c55e',other:'#a855f7'};
-        const html = events.map(e => {
-            const d = new Date(e.date + 'T00:00:00');
-            const mo = d.toLocaleDateString('en-US',{month:'short'}).toUpperCase();
-            const color = tc[e.type] || tc.other;
-            return `
-                <div class="timeline-item">
-                    <div class="timeline-marker" style="border-color:${color};box-shadow:0 0 10px ${color}40;"></div>
-                    <div class="timeline-content">
-                        <div class="timeline-date" style="background:${color}20;border:1px solid ${color}44;border-radius:8px;padding:12px 16px;text-align:center;flex-shrink:0;min-width:80px;">
-                            <span style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:${color};">${mo}</span>
-                            <span style="display:block;font-family:var(--font-display);font-size:28px;color:var(--text-primary);line-height:1;">${d.getDate()}</span>
-                            <span style="font-size:10px;color:var(--text-muted);">${d.getFullYear()}</span>
+        _allEvents = await sbGet('ec_events', 'order=date.asc');
+        const upcoming = _allEvents.filter(e => e.date >= today);
+
+        // Render timeline
+        if (upcoming.length) {
+            const timeline = document.querySelector('.events-timeline');
+            if (timeline) {
+                const tc = {game:'#ef4444',practice:'#3b82f6',event:'#22c55e',other:'#a855f7'};
+                const html = upcoming.map(e => {
+                    const d = new Date(e.date + 'T00:00:00');
+                    const mo = d.toLocaleDateString('en-US',{month:'short'}).toUpperCase();
+                    const color = tc[e.type] || tc.other;
+                    return `
+                        <div class="timeline-item">
+                            <div class="timeline-marker" style="border-color:${color};box-shadow:0 0 10px ${color}40;"></div>
+                            <div class="timeline-content">
+                                <div class="timeline-date" style="background:${color}20;border:1px solid ${color}44;border-radius:8px;padding:12px 16px;text-align:center;flex-shrink:0;min-width:80px;">
+                                    <span style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:${color};">${mo}</span>
+                                    <span style="display:block;font-family:var(--font-display);font-size:28px;color:var(--text-primary);line-height:1;">${d.getDate()}</span>
+                                    <span style="font-size:10px;color:var(--text-muted);">${d.getFullYear()}</span>
+                                </div>
+                                <div class="timeline-info">
+                                    <h4>${e.title}</h4>
+                                    ${e.description ? `<p>${e.description}</p>` : ''}
+                                    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:4px;">
+                                        ${e.time ? `<span class="timeline-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${e.time}</span>` : ''}
+                                        ${e.location ? `<span class="timeline-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${e.location}</span>` : ''}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="timeline-info">
-                            <h4>${e.title}</h4>
-                            ${e.description ? `<p>${e.description}</p>` : ''}
-                            ${e.time ? `<span class="timeline-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${e.time}</span>` : ''}
-                            ${e.location ? `<span class="timeline-location" style="margin-left:${e.time?'12px':'0'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${e.location}</span>` : ''}
-                        </div>
-                    </div>
+                    `;
+                }).join('');
+                timeline.insertAdjacentHTML('afterbegin', html);
+            }
+        }
+        // Mark calendar days after loading
+        markCalendarDays();
+    }
+
+    function markCalendarDays() {
+        document.querySelectorAll('.calendar-day').forEach(cell => {
+            if (!cell._date) return;
+            const dateStr = cell._date.toISOString().slice(0, 10);
+            const dayEvs = _allEvents.filter(e => e.date === dateStr);
+            if (!dayEvs.length) return;
+            cell.classList.add('has-event');
+            if (!cell.querySelector('.ev-dot')) {
+                const dot = document.createElement('span');
+                dot.className = 'ev-dot';
+                dot.style.cssText = 'display:block;width:5px;height:5px;background:var(--gold-primary);border-radius:50%;margin:2px auto 0;';
+                cell.appendChild(dot);
+            }
+            cell.onclick = () => showEventPopup(cell._date, dayEvs);
+        });
+    }
+
+    function showEventPopup(date, evs) {
+        const label = date.toLocaleDateString('en-US', {weekday:'long', month:'long', day:'numeric', year:'numeric'});
+        document.getElementById('popupDateLabel').textContent = label;
+        const pillMap = {game:'pill-game',practice:'pill-practice',event:'pill-event',other:'pill-other'};
+        const labelMap = {game:'Game',practice:'Practice',event:'Special Event',other:'Event'};
+        document.getElementById('popupEventList').innerHTML = evs.map(e => `
+            <div class="popup-event-item">
+                <div class="type-pill ${pillMap[e.type]||'pill-other'}">${labelMap[e.type]||'Event'}</div>
+                <div class="popup-ev-title">${e.title}</div>
+                <div class="popup-ev-meta">
+                    ${e.time ? `<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${e.time}</span>` : ''}
+                    ${e.location ? `<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>${e.location}</span>` : ''}
                 </div>
-            `;
-        }).join('');
-        timeline.insertAdjacentHTML('afterbegin', html);
+                ${e.description ? `<p style="font-size:13px;color:var(--text-secondary);margin-top:8px;">${e.description}</p>` : ''}
+            </div>
+        `).join('');
+        document.getElementById('eventPopup').classList.add('open');
+    }
+
+    function closePopup() {
+        document.getElementById('eventPopup').classList.remove('open');
     }
 
     loadSupabaseEvents();
 
-    // Also update calendar grid to mark event days
+    // Re-mark days when navigating months
     const _origRender = renderCalendar;
-    renderCalendar = async function() {
+    renderCalendar = function() {
         _origRender();
-        const events = await sbGet('ec_events', 'order=date.asc');
-        events.forEach(ev => {
-            const cells = document.querySelectorAll('.calendar-day');
-            cells.forEach(cell => {
-                const d = cell._date;
-                if (d && d.toISOString().slice(0,10) === ev.date) {
-                    cell.classList.add('has-event');
-                    cell.title = (cell.title ? cell.title + ', ' : '') + ev.title;
-                    if (!cell.querySelector('.ev-dot')) {
-                        const dot = document.createElement('span');
-                        dot.className = 'ev-dot';
-                        dot.style.cssText = 'display:block;width:5px;height:5px;background:var(--gold-primary);border-radius:50%;margin:2px auto 0;';
-                        cell.appendChild(dot);
-                    }
-                }
-            });
-        });
+        markCalendarDays();
     };
+
 
     prevBtn.addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() - 1);
@@ -1439,5 +1459,14 @@ a {
         });
     });
     </script>
+
+<!-- EVENT POPUP -->
+<div class="event-popup" id="eventPopup" onclick="if(event.target===this)closePopup()">
+    <div class="event-popup-card">
+        <h3 id="popupDateLabel">Events</h3>
+        <div id="popupEventList"></div>
+        <button class="popup-close" onclick="closePopup()">Close</button>
+    </div>
+</div>
 </body>
 </html>
