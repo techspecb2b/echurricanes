@@ -889,7 +889,7 @@ a {
                                     <polyline points="22,6 12,13 2,6"/>
                                 </svg>
                             </span>
-                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="402523392f353428262f2f3422212c2c232825253200272d21292c6e232f2d">[email&#160;protected]</a></span>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85e0e6fceaf0f1ede3eaeaf1e7e4e9e9e6ede0e0f7c5e2e8e4ece9abe6eae8">[email&#160;protected]</a></span>
                         </li>
                     </ul>
                 </div>
@@ -902,42 +902,69 @@ a {
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 
-    const SB_URL = 'https://aeuhufgbmoydxrnryspm.supabase.co';
-    const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldWh1ZmdibW95ZHhybnJ5c3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDcwNDUsImV4cCI6MjA4Njc4MzA0NX0.gPrLwTjaeBB-b82iSbNI1G023IOPX2std3fmkfsXb3A';
+    document.addEventListener('DOMContentLoaded', function() {
 
-    async function sbGet(table, query='') {
-        const r = await fetch(SB_URL + '/rest/v1/' + table + (query ? '?' + query : ''), {
-            headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY }
+    var SB_URL = 'https://aeuhufgbmoydxrnryspm.supabase.co';
+    var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFldWh1ZmdibW95ZHhybnJ5c3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEyMDcwNDUsImV4cCI6MjA4Njc4MzA0NX0.gPrLwTjaeBB-b82iSbNI1G023IOPX2std3fmkfsXb3A';
+
+    function sbGet(table, query) {
+        var url = SB_URL + '/rest/v1/' + table + (query ? '?' + query : '');
+        return fetch(url, {
+            method: 'GET',
+            headers: {
+                'apikey': SB_KEY,
+                'Authorization': 'Bearer ' + SB_KEY,
+                'Accept': 'application/json'
+            }
+        }).then(function(r) {
+            if (!r.ok) {
+                return r.text().then(function(t) { throw new Error(r.status + ' ' + t); });
+            }
+            return r.json();
         });
-        return r.ok ? r.json() : [];
     }
 
-    async function renderStaff() {
-        const grid = document.getElementById('staffGrid');
+    function renderStaff() {
+        var grid = document.getElementById('staffGrid');
         if (!grid) return;
         grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Loading...</div>';
-        const staff = await sbGet('ec_staff', 'order=sort_order.asc');
-        if (!staff.length) { grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">No staff listed.</div>'; return; }
-        grid.innerHTML = staff.map(s => {
-            const photoHtml = s.photo_url
-                ? `<img src="${s.photo_url}" alt="${s.name}">`
-                : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
-            const certs = (s.certifications||'').split(',').map(c => c.trim()).filter(Boolean);
-            return `
-                <div class="staff-card">
-                    <div class="staff-photo">${photoHtml}</div>
-                    <div class="staff-card-body">
-                        <h3>${s.name}</h3>
-                        <p class="staff-role">${s.role}</p>
-                        <p>${s.bio||''}</p>
-                        ${certs.length ? `<div class="staff-certifications">${certs.map(c=>`<span>${c}</span>`).join('')}</div>` : ''}
-                    </div>
-                </div>
-            `;
-        }).join('');
+
+        sbGet('ec_staff', 'order=sort_order.asc').then(function(staff) {
+            if (!staff || !staff.length) {
+                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">No staff listed.</div>';
+                return;
+            }
+            var html = '';
+            staff.forEach(function(s) {
+                var photoHtml = s.photo_url
+                    ? '<img src="' + s.photo_url + '" alt="' + s.name + '">'
+                    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+
+                var certs = (s.certifications || '').split(',').map(function(c) { return c.trim(); }).filter(Boolean);
+                var certHtml = certs.length
+                    ? '<div class="staff-certifications">' + certs.map(function(c) { return '<span>' + c + '</span>'; }).join('') + '</div>'
+                    : '';
+
+                html += '<div class="staff-card">'
+                    + '<div class="staff-photo">' + photoHtml + '</div>'
+                    + '<div class="staff-card-body">'
+                    + '<h3>' + s.name + '</h3>'
+                    + '<p class="staff-role">' + s.role + '</p>'
+                    + '<p>' + (s.bio || '') + '</p>'
+                    + certHtml
+                    + '</div>'
+                    + '</div>';
+            });
+            grid.innerHTML = html;
+        }).catch(function(err) {
+            console.error('EC Hurricanes staff load error:', err);
+            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted)">Could not load staff. Please refresh.</div>';
+        });
     }
 
     renderStaff();
+
+    }); // end DOMContentLoaded
 
     // Rain Effect
     function createRainDrop() {
@@ -998,12 +1025,4 @@ a {
     setTimeout(triggerLightning, 2000);
 
     // Mobile Menu
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileToggle.classList.toggle('active');
-    });
-
-    document.querySele
+    const mobileToggle = document.querySelector('.mobile-toggle

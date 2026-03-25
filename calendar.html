@@ -379,7 +379,7 @@ a {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 4px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .calendar-grid-header span {
@@ -400,16 +400,20 @@ a {
 }
 
 .calendar-day {
-    aspect-ratio: 1;
+    min-height: 56px;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 8px 4px 6px;
     font-family: var(--font-heading);
     font-size: 16px;
     background: rgba(255, 255, 255, 0.02);
     border-radius: 8px;
-    cursor: pointer;
+    cursor: default;
     transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
 }
 
 .calendar-day:hover {
@@ -1137,7 +1141,7 @@ a {
                                     <polyline points="22,6 12,13 2,6"/>
                                 </svg>
                             </span>
-                            <span>ecyouthfootballcheer@gmail.com</span>
+                            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d8bdbba1b7adacb0beb7b7acbab9b4b4bbb0bdbdaa98bfb5b9b1b4f6bbb7b5">[email&#160;protected]</a></span>
                         </li>
                     </ul>
                 </div>
@@ -1148,7 +1152,7 @@ a {
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ============================================
     // RAIN EFFECT
     // ============================================
@@ -1381,16 +1385,32 @@ a {
 
     function markCalendarDays() {
         document.querySelectorAll('.calendar-day').forEach(cell => {
+            // Remove old labels when re-rendering months
+            cell.querySelectorAll('.cal-ev-label').forEach(el => el.remove());
+            cell.onclick = null;
+            cell.classList.remove('has-event');
+
             if (!cell._date) return;
             const dateStr = cell._date.toISOString().slice(0, 10);
             const dayEvs = _allEvents.filter(e => e.date === dateStr);
             if (!dayEvs.length) return;
+
             cell.classList.add('has-event');
-            if (!cell.querySelector('.ev-dot')) {
-                const dot = document.createElement('span');
-                dot.className = 'ev-dot';
-                dot.style.cssText = 'display:block;width:5px;height:5px;background:var(--gold-primary);border-radius:50%;margin:2px auto 0;';
-                cell.appendChild(dot);
+            // Show up to 2 event name labels
+            dayEvs.slice(0, 2).forEach(e => {
+                const lbl = document.createElement('span');
+                lbl.className = 'cal-ev-label type-' + (e.type || 'other');
+                // Shorten name to fit: max ~12 chars
+                const name = e.title.length > 12 ? e.title.slice(0, 11) + '…' : e.title;
+                lbl.textContent = name;
+                lbl.title = e.title;
+                cell.appendChild(lbl);
+            });
+            if (dayEvs.length > 2) {
+                const more = document.createElement('span');
+                more.className = 'cal-ev-label type-other';
+                more.textContent = '+' + (dayEvs.length - 2) + ' more';
+                cell.appendChild(more);
             }
             cell.onclick = () => showEventPopup(cell._date, dayEvs);
         });
@@ -1461,12 +1481,4 @@ a {
     </script>
 
 <!-- EVENT POPUP -->
-<div class="event-popup" id="eventPopup" onclick="if(event.target===this)closePopup()">
-    <div class="event-popup-card">
-        <h3 id="popupDateLabel">Events</h3>
-        <div id="popupEventList"></div>
-        <button class="popup-close" onclick="closePopup()">Close</button>
-    </div>
-</div>
-</body>
-</html>
+<div class="event-popup" id="eventPopup" onclick="if(event.target===this)c
